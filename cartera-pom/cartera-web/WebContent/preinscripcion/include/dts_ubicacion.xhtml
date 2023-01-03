@@ -1,0 +1,125 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style=" margin: 0 auto;">
+
+		<p:panelGrid columns="6" cellpadding="5" layout="grid"
+			style="width:100%;">
+
+			<p:column>
+				<p:outputLabel for="pais_resid"
+					value="#{comun['page.pre_ins.pais']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="pais_resid" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue="" />
+					<f:selectItem
+						itemLabel="Xbox especializacion en gestiond e la informacion y tic "
+						itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</h:selectOneMenu>
+			</p:column>
+			<p:column>
+				<p:message for="pais_resid" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel for="depart_resid"
+					value="#{comun['page.pre_ins.departamento']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="depart_resid" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue="" />
+					<f:selectItem
+						itemLabel="Xbox especializacion en gestiond e la informacion y tic "
+						itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</h:selectOneMenu>
+			</p:column>
+
+			<p:column>
+				<p:message for="depart_resid" />
+			</p:column>
+			<p:column>
+				<p:outputLabel for="munic_resid"
+					value="#{comun['page.pre_ins.municipio']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="munic_resid" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue="" />
+					<f:selectItem
+						itemLabel="Xbox especializacion en gestiond e la informacion y tic "
+						itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</h:selectOneMenu>
+			</p:column>
+
+			<p:column>
+				<p:message for="munic_resid" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel for="zona" value="#{comun['page.pre_ins.zona']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="zona" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue="" />
+					<f:selectItem
+						itemLabel="Xbox especializacion en gestiond e la informacion y tic "
+						itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</h:selectOneMenu>
+			</p:column>
+			<p:column>
+				<p:message for="zona" />
+			</p:column>
+
+
+			<p:column>
+				<p:outputLabel for="barrio" value="#{comun['page.pre_ins.barrio']}" />
+			</p:column>
+			<p:column>
+				<h:inputTextarea id="barrio" rows="4" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield" />
+
+			</p:column>
+			<p:column>
+				<p:message for="barrio" />
+			</p:column>
+			<p:column>
+				<p:outputLabel for="direccion"
+					value="#{comun['page.pre_ins.direccion']}" />
+			</p:column>
+			<p:column>
+				<h:inputTextarea id="direccion" rows="4" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield" />
+
+			</p:column>
+			<p:column>
+				<p:message for="direccion" />
+			</p:column>
+
+
+
+		</p:panelGrid>
+	</p:panel>
+</h:body>
+</html>

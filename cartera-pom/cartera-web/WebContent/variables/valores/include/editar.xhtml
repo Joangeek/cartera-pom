@@ -1,0 +1,192 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:100% !important"
+styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+footer="#{comun['page.conten.pnl.campos.asterisco']}">
+	
+		<p:outputPanel>
+
+			<p:panelGrid columns="3" cellpadding="4" 
+				style="width:100%; margin:0 auto;">
+
+				<h:outputLabel for="Newano2"
+					value="#{configurar['lbl.valormatricula.ano']}" />
+				<p:inputText id="Newano2" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newano2" display="icon" />
+
+
+				<h:outputLabel for="Semestre2"
+					value="#{configurar['lbl.valormatricula.semestre']}" />
+
+				<h:selectOneMenu id="Semestre2" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="---- Seleccione ---" itemValue="---- Seleccione ----" />
+					<f:selectItem itemLabel="Semestre 1" itemValue="Semestre 1" />
+					<f:selectItem itemLabel="Semestre 2" itemValue="Semestre 2" />
+				</h:selectOneMenu>
+				<p:message for="Semestre2" display="icon" />
+
+				<h:outputLabel for="Newnumero_de_creditos2"
+					value="#{configurar['lbl.valormatricula.numero_de_creditos']}" />
+				<p:inputText id="Newnumero_de_creditos2" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newnumero_de_creditos2" display="icon" />
+
+				<h:outputLabel for="Newvalor_de_credito2"
+					value="#{configurar['lbl.valormatricula.valor_de_credito']}" />
+				<p:inputText id="Newvalor_de_credito2" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newvalor_de_credito2" display="icon" />
+
+				<h:outputLabel for="NewSeguro2"
+					value="#{configurar['lbl.valormatricula.seguro']}" />
+				<p:inputText id="NewSeguro2" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="NewSeguro2" display="icon" />
+
+				<h:outputLabel for="Newnumero_de_inscritos2"
+					value="#{configurar['lbl.valormatricula.numero_de_inscritos']}" />
+				<p:inputText id="Newnumero_de_inscritos2" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newnumero_de_inscritos2" display="icon" />
+
+			</p:panelGrid>
+
+
+			<p:panelGrid columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+				<f:facet name="header">
+					<p:outputLabel
+						value="Estudiantes Nuevos" />
+				</f:facet>
+
+				<h:outputLabel for="Newvalor_matricula2"
+					value="#{configurar['lbl.valormatricula.valor_matricula']}" />
+				<p:inputText id="Newvalor_matricula2" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newvalor_matricula2" display="icon" />
+
+				<h:outputLabel for="Newmatricula_extraordinaria2"
+					value="#{configurar['lbl.valormatricula.matricula_extraordinaria']}" />
+				<p:inputText id="Newmatricula_extraordinaria2" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newmatricula_extraordinaria2" display="icon" />
+
+				<h:outputLabel for="Newproyeccion_de_alumnos2"
+					value="#{configurar['lbl.valormatricula.proyeccion_de_alumnos']}" />
+				<p:inputText id="Newproyeccion_de_alumnos2" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newproyeccion_de_alumnos2" display="icon" />
+
+          </p:panelGrid>
+
+               <p:panelGrid columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+				<f:facet name="header">
+					<p:outputLabel
+						value="Estudiantes Antiguos" />
+				</f:facet>
+
+ <h:outputLabel for="Newvalor_matricula12"
+					value="#{configurar['lbl.valormatricula.valor_matricula']}" />
+				<p:inputText id="Newvalor_matricula12" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newvalor_matricula12" display="icon" />
+
+				<h:outputLabel for="Newmatricula_extraordinaria12"
+					value="#{configurar['lbl.valormatricula.matricula_extraordinaria']}" />
+				<p:inputText id="Newmatricula_extraordinaria12" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newmatricula_extraordinaria12" display="icon" />
+
+				<h:outputLabel for="Newproyeccion_de_alumnos12"
+					value="#{configurar['lbl.valormatricula.proyeccion_de_alumnos']}" />
+				<p:inputText id="Newproyeccion_de_alumnos12" styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newproyeccion_de_alumnos12" display="icon" />
+          
+          
+          
+          
+          
+          
+          
+				<f:facet name="footer">
+					<p:commandLink id="cmleGuardarEditar">
+						<p:graphicImage id="btnEe" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+					<p:commandLink id="cmleLimpiar" immediate="true" process="@this">
+						<p:graphicImage id="btnLe" title="#{comun['btn.limpiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/clear_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+					<p:commandLink id="cmleCancelar" immediate="true"
+						onclick="PF('dlg2').hide();" style="float:right;">
+						<p:graphicImage id="btnCe" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

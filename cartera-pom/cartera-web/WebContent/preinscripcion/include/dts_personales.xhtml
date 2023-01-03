@@ -1,0 +1,233 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style=" margin: 0 auto;">
+		<p:panelGrid columns="6" cellpadding="5" layout="grid"
+			style="width:100%;">
+
+			<p:column>
+				<p:outputLabel for="tipo_doc"
+					value="#{comun['page.pre_ins.tipo.documento']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="tipo_doc" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue="" />
+					<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</h:selectOneMenu>
+			</p:column>
+			<p:column>
+				<p:message for="tipo_doc" />
+			</p:column>
+
+
+			<p:column>
+				<p:outputLabel for="documento"
+					value="#{comun['page.pre_ins.documento']}" />
+			</p:column>
+			<p:column>
+				<h:inputText id="documento"
+					validatorMessage="#{comun['msg.validar.formato']}"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					required="true" onkeypress="return justNumbers(event);"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:validateRegex pattern="[A-Za-z]" for="documento" />
+					<!-- OJO depende del tipo de documento el formato de la identificación -->
+				</h:inputText>
+			</p:column>
+			<p:column>
+				<p:message for="documento" />
+			</p:column>
+			<p:column>
+				<p:outputLabel for="fecha_ex"
+					value="#{comun['page.pre_ins.fecha.expedicion']}" />
+			</p:column>
+			<p:column>
+				<p:calendar id="fecha_ex" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					style="width:100px !important;" showOn="button"
+					pattern="dd-MM-yyyy" mask="true" />
+			</p:column>
+			<p:column>
+				<p:message for="fecha_ex" />
+			</p:column>
+			<p:column>
+				<p:outputLabel for="fecha_nacimiento"
+					value="#{comun['page.pre_ins.fecha_nacimiento']}" />
+			</p:column>
+			<p:column>
+
+				<p:calendar id="fecha_nacimiento" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					showOn="button" pattern="dd-MM-yyyy" mask="true">
+					<!-- <p:ajax event="dateSelect"
+													listener="#{userWizard.onDateSelect()}" update="msgs" />  -->
+				</p:calendar>
+			</p:column>
+			<p:column>
+				<p:message for="fecha_nacimiento" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel for="nombre1"
+					value="#{comun['page.pre_ins.nombre1']}" />
+			</p:column>
+			<p:column>
+				<h:inputText id="nombre1" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield" />
+
+			</p:column>
+			<p:column>
+				<p:message for="nombre1" />
+			</p:column>
+			<p:column>
+				<p:outputLabel for="nombre2"
+					value="#{comun['page.pre_ins.nombre2']}" />
+			</p:column>
+			<p:column>
+				<h:inputText id="nombre2"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield" />
+
+			</p:column>
+			<p:column>
+				<p:message for="nombre2" />
+			</p:column>
+			<p:column>
+				<p:outputLabel for="apellido1"
+					value="#{comun['page.pre_ins.apellido1']}" />
+			</p:column>
+			<p:column>
+				<h:inputText id="apellido1" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield" />
+
+			</p:column>
+			<p:column>
+				<p:message for="apellido1" />
+			</p:column>
+			<p:column>
+				<p:outputLabel for="apellido2"
+					value="#{comun['page.pre_ins.apellido2']}" />
+			</p:column>
+			<p:column>
+				<h:inputText id="apellido2"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield" />
+
+			</p:column>
+			<p:column>
+				<p:message for="apellido2" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel for="estado_civil"
+					value="#{comun['page.pre_ins.estado.civil']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="estado_civil" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue="" />
+					<f:selectItem
+						itemLabel="Xbox especializacion en gestiond e la informacion y tic "
+						itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</h:selectOneMenu>
+			</p:column>
+			<p:column>
+				<p:message for="estado_civil" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel for="genero"
+					value="#{comun['page.pre_ins.estado.genero']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="genero" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue="" />
+					<f:selectItem
+						itemLabel="Xbox especializacion en gestiond e la informacion y tic "
+						itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</h:selectOneMenu>
+			</p:column>
+			<p:column>
+				<p:message for="genero" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel for="grupo_etnico"
+					value="#{comun['page.pre_ins.grupo.etnico']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="grupo_etnico" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue="" />
+					<f:selectItem
+						itemLabel="Xbox especializacion en gestiond e la informacion y tic "
+						itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</h:selectOneMenu>
+			</p:column>
+
+			<p:column>
+				<p:message for="grupo_etnico" />
+			</p:column>
+			<p:column>
+				<p:outputLabel for="pueblo_indigena"
+					value="#{comun['page.pre_ins.pueblo.indigena']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="pueblo_indigena" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue="" />
+					<f:selectItem
+						itemLabel="Xbox especializacion en gestiond e la informacion y tic "
+						itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</h:selectOneMenu>
+			</p:column>
+
+			<p:column>
+				<p:message for="comunidad_negra" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel for="comunidad_negra"
+					value="#{comun['page.pre_ins.estado.comunidad.negra']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="comunidad_negra" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue="" />
+					<f:selectItem
+						itemLabel="Xbox especializacion en gestiond e la informacion y tic "
+						itemValue="Xbox One" />
+					<f:selectItem itemLabel="PS4" itemValue="PS4" />
+					<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+				</h:selectOneMenu>
+			</p:column>
+
+			<p:column>
+				<p:message for="comunidad_negra" />
+			</p:column>
+		</p:panelGrid>
+	</p:panel>
+</h:body>
+</html>

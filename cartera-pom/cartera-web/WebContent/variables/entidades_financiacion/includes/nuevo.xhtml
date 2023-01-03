@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:100% !important"
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+		<p:outputPanel>
+
+			<p:panelGrid columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+
+				<h:outputLabel for="Newcodigo"
+					value="#{configurar['lbl.entidades_financiacion.codigo']} #{comun['global.asterisco']}" />
+				<p:inputText id="Newcodigo"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.asterisco']}"
+					value="#{entidadesFinanciacionMB.entity.entidadCode}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newcodigo" display="icon" />
+
+
+				<h:outputLabel for="nombreNew"
+					value="#{configurar['lbl.entidades_financiacion.nombre']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="nombreNew"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					value="#{entidadesFinanciacionMB.entity.entidadDescr}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="nombreNew" display="icon" />
+
+				<h:outputLabel for="nombreNew"
+					value="#{configurar['lbl.entidades_financiacion.estado']} #{comun['global.asterisco']}" />
+
+				<p:selectOneMenu id="estadoadd"
+					value="#{entidadesFinanciacionMB.entity.estado}" required="true">
+					<f:selectItem itemLabel="#{comun['itemLabel.selecione']}"
+						itemValue="Seleccione" />
+					<f:selectItem itemValue="1"
+						itemLabel="#{comun['lbl.estado.activo']}" />
+					<f:selectItem itemValue="0"
+						itemLabel="#{comun['lbl.estado.inactivo']}" />
+					<p:ajax update="estadoadd" event="change" onstart="true" />
+				</p:selectOneMenu>
+
+				<p:message for="estadoadd" display="icon" />
+
+
+
+
+				<f:facet name="footer">
+					<p:commandLink id="cmlGuardarNew" process="@this"
+						update=":form :formDialogs"
+						actionListener="#{entidadesFinanciacionMB.create()}">
+						<p:graphicImage id="btnGuardarNew" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.guardar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+					
+					<p:commandLink immediate="true" process="@this">
+						<p:graphicImage title="#{comun['btn.limpiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/clear_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+					
+					<p:commandLink id="cmlCancelarNew" immediate="true"
+						onclick="PF('dlg1').hide();" style="float:right;">
+						<p:graphicImage id="btnCNew" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.nuevo']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

@@ -1,0 +1,331 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf"
+				value="GENERACIÓN DEL RECIBO DE MATRICULA "
+				url="${requestContexteath}/resources/images/Filter-List-icon.png" />
+		</ui:define>
+
+
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlGenerarRecibo" onclick="PF('dlg1').show();">
+						<p:graphicImage id="btnGR" title="#{comun['btn.generarrecibo']}"
+							styleClass="imgsBA" alt="#{comun['btn.generarrecibo']}"
+							url="${requestContexteath}/resources/images/generarR.png" />
+					</p:commandLink>
+
+
+					<p:commandLink id="cmlCancelar" onclick="PF('dlg2').show();">
+						<p:graphicImage id="btnC" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.cancelar']}"
+							url="${requestContexteath}/resources/images/cancelarR.png" />
+					</p:commandLink>
+
+
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+
+
+		<ui:define name="content">
+			<p:panel header="#{comun['page.header.titleGenerarRecibo']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+				footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+				<p:outputPanel>
+
+					<p:panelGrid columns="6" cellpadding="4"
+						style="width:100%; margin:0 auto;">
+						<f:facet name="header">
+							<p:outputLabel value="Datos Basicos del Estudiante" />
+						</f:facet>
+
+						<h:outputLabel style="width:30%"
+							value="#{configurar['lbl.matriculas.nombree']}" />
+						<p:outputLabel value="NOMBRE DEL ESTUDIANTE" />
+
+
+						<h:outputLabel for="Newid3" style="width:30%"
+							value="#{configurar['lbl.matriculas.identificacion']}" />
+						<p:outputLabel value="NOMBRE DEL ESTUDIANTE" />
+
+
+						<h:outputLabel for="Newprograma" style="width:30%"
+							value="#{configurar['lbl.matriculas.programa']}" />
+						<h:outputLabel value="PROGRAMA" />
+
+					</p:panelGrid>
+
+					<br />
+
+
+					<p:panelGrid style="width:100%; margin:0 auto;">
+						<p:row>
+							<p:column style="width:50%">
+								<p:panelGrid columns="3" cellpadding="4"
+									style="width:100%; margin:0 auto;">
+									<f:facet name="header">
+										<p:outputLabel value="Tipo de Matricula" />
+									</f:facet>
+
+
+
+									<h:outputLabel for="tipom"
+										value="#{configurar['lbl.matriculas.tipodomatricula']}" />
+
+									<h:selectOneMenu id="tipom" required="true"
+										requiredMessage="#{comun['msg.validar.obligatorio']}"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+										<f:selectItem itemLabel="---- Seleccione ---"
+											itemValue="---- Seleccione ----" />
+										<f:selectItem itemLabel="Normal" itemValue="Normal" />
+										<f:selectItem itemLabel="Beca" itemValue="Beca" />
+											<f:selectItem itemLabel="Credito" itemValue="Credito" />
+									</h:selectOneMenu>
+									<p:message for="tipom" display="icon" />
+
+									<h:outputLabel for="resolucion"
+										value="#{configurar['lbl.matriculas.resolucion']}" />
+									<p:inputText id="resolucion"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="resolucion" display="icon" />
+
+									<h:outputLabel for="porcentaje"
+										value="#{configurar['lbl.matriculas.porcentajebeca']}" />
+									<p:inputText id="porcentaje"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="porcentaje" display="icon" />
+
+									<h:outputLabel for="creditos"
+										value="#{configurar['lbl.matriculas.ncreditos']}" />
+									<p:inputText id="creditos"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="creditos" display="icon" />
+
+
+
+
+								</p:panelGrid>
+							</p:column>
+
+							<p:column style="width:50%">
+								<p:panelGrid columns="3" cellpadding="4"
+									style="width:100%; margin:0 auto;">
+									<f:facet name="header">
+										<p:outputLabel value="Recibo de Matricula Convencional" />
+									</f:facet>
+
+									<p:outputLabel
+										value="#{configurar['lbl.matriculas.descuento2']}" />
+									<p:outputLabel value="real" />
+									<h:outputLabel />
+
+									<p:outputLabel
+										value="#{configurar['lbl.matriculas.ordinario']}" />
+									<p:outputLabel value="VALOR ORDINARIO" />
+									<p:outputLabel />
+
+									<p:outputLabel
+										value="#{configurar['lbl.matriculas.valorpagar']}" />
+									<p:outputLabel value="VALOR A PAGAR ORDINARIO" />
+									<p:outputLabel />
+
+									<h:outputLabel value="Fecha Limite de Pago Extraordinario" />
+									<h:outputLabel value="VALOR EXTRAORDINARIO" />
+									<h:outputLabel />
+
+								</p:panelGrid>
+
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column style="width:50%">
+								<p:panelGrid columns="3" cellpadding="4"
+									style="width:100%; margin:0 auto;">
+									<f:facet name="header">
+										<p:outputLabel value="Datos Generales" />
+									</f:facet>
+
+									<h:outputLabel for="numeror"
+										value="#{configurar['lbl.matriculas.numerorecibos']}" />
+									<p:outputLabel value="1234" />
+									<h:outputLabel />
+
+									<h:outputLabel for="matricula"
+										value="#{configurar['lbl.matriculas.nmatricula']}" />
+									<h:selectOneMenu id="p" required="true"
+										requiredMessage="#{comun['msg.validar.obligatorio']}"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+										<f:selectItem itemLabel="---- Seleccione ---"
+											itemValue="---- Seleccione ----" />
+										<f:selectItem itemLabel="---- Ordinaria ---"
+											itemValue="---- Ordinaria ----" />
+										<f:selectItem itemLabel="---- Extraordinaria ---"
+											itemValue="----Extraordinaria ----" />
+									</h:selectOneMenu>
+									<p:message for="p" display="icon" />
+
+
+									<h:outputLabel for="seguroestudiantil"
+										value="#{configurar['lbl.matriculas.seguro']}" />
+									<p:inputText id="seguroestudiantil"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="seguroestudiantil" display="icon" />
+
+
+
+									<h:outputLabel for="recargo"
+										value="#{configurar['lbl.matriculas.recargo']}" />
+									<p:outputLabel value="$" />
+									<h:outputLabel />
+
+
+									<p:outputLabel for="expedicion"
+										value="Fecha de Expedición #{comun['global.asterisco']}" />
+									<p:calendar id="expedicion" value="#{calendarView.date3}"
+										requiredMessage="#{comun['global.asterisco']}"
+										style="width:100px !important;" showOn="button"
+										pattern="dd-MM-yyyy" mask="true" />
+									<p:message for="expedicion" id="msgEditExpedición"
+										display="icon" />
+
+
+
+
+									<h:outputLabel for="pagar"
+										value="#{configurar['lbl.matriculas.valorpagar']}" />
+									<p:outputLabel value="$" />
+									<h:outputLabel />
+								</p:panelGrid>
+
+							</p:column>
+
+							<p:column style="width:50%">
+								<p:panelGrid columns="3" cellpadding="4"
+									style="width:100%; margin:0 auto;">
+									<f:facet name="header">
+										<p:outputLabel value="Descuentos de la Institución" />
+									</f:facet>
+
+
+									<h:outputLabel for="concepto"
+										value="#{configurar['lbl.matriculas.concepto']}" />
+
+									<h:selectOneMenu id="concepto" required="true"
+										requiredMessage="#{comun['msg.validar.obligatorio']}"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+										<f:selectItem itemLabel="---- Seleccione ---"
+											itemValue="---- Seleccione ----" />
+									</h:selectOneMenu>
+									<p:message for="concepto" display="icon" />
+
+
+									<h:outputLabel value="#{configurar['lbl.matriculas.valor']}" />
+									<h:outputLabel value="1.000.520" />
+									<h:outputLabel />
+
+
+									<h:outputLabel for="conceptoAdicioanl"
+										value="Concepto adicional" />
+
+									<h:selectOneMenu id="conceptoAdicioanl" required="true"
+										requiredMessage="#{comun['msg.validar.obligatorio']}"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+										<f:selectItem itemLabel="---- Seleccione ---"
+											itemValue="---- Seleccione ----" />
+									</h:selectOneMenu>
+									<p:message for="conceptoAdicioanl" display="icon" />
+
+
+									<h:outputLabel for="valorAdicional" value="valor adicional" />
+									<p:inputText id="valorAdicional"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="valorAdicional" display="icon" />
+
+
+									<h:outputLabel for="descrValAdicional"
+										value="#{configurar['lbl.matriculas.descripcion']}" />
+									<p:inputText id="descrValAdicional"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="descrValAdicional" display="icon" />
+
+
+
+								</p:panelGrid>
+
+							</p:column>
+
+
+						</p:row>
+					</p:panelGrid>
+
+
+				</p:outputPanel>
+
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+			</p:panel>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

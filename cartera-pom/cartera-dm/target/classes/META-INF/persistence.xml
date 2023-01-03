@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="cartera-dm" transaction-type="JTA">
+		 <jta-data-source>java:/sigaExDS</jta-data-source> 
+		<!--<jta-data-source>java:/sigaExDS</jta-data-source> -->
+
+		<class>comun.Tbldepartamento</class>
+		<class>academico.TblacaAreasConocimiento</class>
+		<class>academico.TblacaMetodologia</class>
+		<class>academico.TblacaPeriodicidad</class>
+		<class>academico.TblacaSede</class>
+		<class>academico.TblacaSedePrograma</class>
+		<class>academico.TblacaTipoCubrimiento</class>
+		<class>academico.TblacaUnidadOrganizacional</class>
+
+		<class>gestion.Menu</class>
+		<class>gestion.MenuUserGruPer</class>
+		<class>gestion.MenuUsuarioGrupo</class>
+		<class>gestion.Permiso</class>
+		<class>auditoria.Tblingreso</class>
+		<class>talentoHumano.TblthEntidade</class>
+		<class>talentoHumano.TblthParticipante</class>
+		<class>talentoHumano.TblthTipoEntidad</class>
+		<class>talentoHumano.TblthTipoIdentificacion</class>
+		<class>gestion.Grupo</class>
+		<class>gestion.Usuario</class>
+		<class>gestion.UsuarioGrupo</class>
+		<class>gestion.Parametros</class>
+		<class>talentoHumano.TblthCargo</class>
+		<class>comun.TblestadoCivil</class>
+		<class>comun.Tblgenero</class>
+		<class>comun.Tblmunicipio</class>
+		<class>comun.Tblpais</class>
+		<class>comun.TblcalFormato</class>
+		<class>cartera.TblDepartamento</class>
+		<class>cartera.TblEstrato</class>
+		<class>cartera.TblMunicipio</class>
+		<class>cartera.TblPais</class>
+		<class>academico.TblacaActividadCalendario</class>
+		<class>academico.TblacaAutorizacionPrograma</class>
+		<class>academico.TblacaCalendarioAcademico</class>
+		<class>academico.TblacaJornada</class>
+		<class>academico.TblacaMatriculado</class>
+		<class>academico.TblacaNivelEstudio</class>
+		<class>academico.TblacaParcial</class>
+		<class>academico.TblacaPeriodo</class>
+		<class>academico.TblacaPlanestudio</class>
+		<class>academico.TblacaPrograma</class>
+		<class>academico.TblacaProgramaH</class>
+		<class>academico.TblacaProgramacionParciale</class>
+		<class>academico.TblestEstudiante</class>
+		<class>academico.TblestEstudianteH</class>
+		<class>academico.TblestEstudiantePrograma</class>
+		<class>cartera.TblextCursosExtension</class>
+		<class>cartera.TblextCursosExtensionH</class>
+		<class>cartera.TblextEstudianteExtension</class>
+		<class>cartera.TblextInscripcionExtension</class>
+		<class>cartera.TblextTipoClienteEduCon</class>
+		<class>cartera.TblextTipoCursoEdcont</class>
+		<class>cartera.TblfinBanco</class>
+		<class>cartera.TblfinConceptosRecibo</class>
+		<class>cartera.TblfinConceptosRecibosParticipante</class>
+		<class>cartera.TblfinConceptosRecibosParticipantePK</class>
+		<class>cartera.TblfinCreditoMatricula</class>
+		<class>cartera.TblfinCreditoMatriculaExt</class>
+		<class>cartera.TblfinEntidadesCredito</class>
+		<class>cartera.TblfinEstadoFinanciacion</class>
+		<class>cartera.TblfinEstudianteProgramaRecibo</class>
+		<class>cartera.TblfinPagoEstudianteExtH</class>
+		<class>cartera.TblfinPagosCredito</class>
+		<class>cartera.TblfinTarifa</class>
+		<class>cartera.TblfinTarifaMatricula</class>
+		<class>cartera.TblfinTipoCuenta</class>
+		<class>cartera.TblmerAdmitido</class>
+		<class>cartera.TblmerCategoriaComfacauca</class>
+		<class>cartera.TblmerEstrato</class>
+		<class>comun.TblEmpresa</class>
+
+
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+		</properties>
+	</persistence-unit>
+</persistence>

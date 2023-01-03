@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<link rel="shortcut icon"
+		href="${facesContext.externalContext.requestContextPath}/resources/images/favicon.ico"
+		type="image/x-icon" />
+
+	<script type="text/javascript"
+		src="/cartera/resources/js/exportTable.js" />
+</h:head>
+<title><ui:insert name="title">
+		<ui:include src="/facelets/templates/title.xhtml" />
+	</ui:insert></title>
+
+<h:body style=" background-color: #004895 !important;">
+
+	<f:facet name="last">
+
+		<h:outputStylesheet name="bootstrap.min.css" library="css" />
+		<h:outputStylesheet name="bootstrap-theme.min.css" library="css" />
+		<h:outputStylesheet name="style.css" library="css" />
+	</f:facet>
+
+	<div id="page">
+		<div id="estatico">
+			<div id="header" style="border-bottom: 2px solid #D58500;">
+				<ui:insert name="header">
+					<div align="center">
+						<nav class="navbar navbar-inverse navbar-static-top">
+							<div class="container">
+								<div class="navbar-header">
+									<a href="http://www.unicomfacauca.edu.co"
+										title="#{comun['page.header.title.link']}"> <p:graphicImage
+											id="imgLogo" title="#{comun['page.header.title']}"
+											alt="#{comun['page.header.title']}"
+											url="${requestContextPath}/resources/images/logo.png" />
+									</a>
+								</div>
+							</div>
+						</nav>
+					</div>
+				</ui:insert>
+			</div>
+			<div id="globalMsg"  align="center">
+				<ui:insert name="msg">
+					<ui:include src="/facelets/templates/globalMsg.xhtml" />
+				</ui:insert>
+			</div>
+			<div id="titlePage">
+				<h3 id="ti">
+					<ui:insert name="titleMenu" />
+				</h3>
+
+			</div>
+
+			<div id="separator">
+				<p:separator />
+			</div>
+		</div>
+		<div id="content" class="content"
+			style="margin-bottom: 10px !important;">
+			<ui:insert name="content">
+				<ui:include src="/facelets/templates/common/commonContent.xhtml" />
+			</ui:insert>
+		</div>
+		<div id="footerlogin" class="footerlogin" style="border-top: 2px solid #B6C72C;">  
+			<ui:insert name="footer">
+				<ui:include src="/facelets/templates/common/commonFooter.xhtml" />
+			</ui:insert>
+		</div>
+	</div>
+</h:body>
+</html>

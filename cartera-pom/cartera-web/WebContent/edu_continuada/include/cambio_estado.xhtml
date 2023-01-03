@@ -1,0 +1,120 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:70% !important"
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+		<p:outputPanel>
+			<h:form>
+				<p:growl id="messages" showDetail="true" />
+				<p:panelGrid   id="display" cellpadding="1"
+					style="width:100%; margin:0 auto;">
+					<p:row>
+						<p:column colspan="4" style="align:center; text-align:center;">
+							<p:graphicImage id="btnaprobado" title="#{comun['btn.aprobado']}"
+								styleClass="imgsBA" alt="#{comun['btn.aprobado']}"
+								style="margin:10px;"
+								url="${requestContexteath}/resources/images/estatus (2).png" />
+							<h:outputLabel />
+							<p:graphicImage id="btnespera" title="#{comun['btn.espera']}"
+								styleClass="imgsBA" alt="#{comun['btn.espera']}"
+								style="margin:10px;"
+								url="${requestContexteath}/resources/images/estatus (3).png" />
+							<h:outputLabel />
+							<p:graphicImage id="btndesaprobado"
+								title="#{comun['btn.desaprobado']}" styleClass="imgsBA"
+								alt="#{comun['btn.desaprobado']}" style="margin:10px;"
+								url="${requestContexteath}/resources/images/desaprobado.png" />
+							<h:outputLabel />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="2">
+							<p:outputLabel for="vigenciaEdit"
+								value="Fecha #{comun['global.asterisco']}" />
+							<p:calendar id="vigenciaEdit" value="#{calendarView.date3}"
+								requiredMessage="#{comun['global.asterisco']}"
+								style="width:100px !important;" showOn="button"
+								pattern="dd-MM-yyyy" mask="true" />
+							<p:message for="vigenciaEdit" id="msgEditVigencia" display="icon" />
+
+						</p:column>
+						<p:column colspan="2">
+							<h3>
+								<h:outputText value="Observaciones" />
+							</h3>
+							<p:inputTextarea rows="5" cols="30" maxlength="10"
+								counterTemplate="{0} characters remaining." autoResize="false" />
+
+							<h:outputLabel />
+							<h:outputLabel />
+							<h:outputLabel />
+							
+							
+						</p:column>
+						
+
+					</p:row>
+					
+					<p:row>
+						<p:column colspan="4"   style="width:50%" >
+						<center>
+						<p:commandLink id="cmlGuardarEdit">
+								<p:graphicImage id="btnGuardarEdit"
+									title="#{comun['btn.guardar']}" styleClass="imgsBA"
+									alt="#{comun['btn.editar']}"
+									url="${requestContextPath}/resources/images/save_f2.png" />
+							</p:commandLink>
+							</center>
+							
+							<p:dataTable var="Cuotas">
+									<f:facet name="header">
+         Financiación por Cuotas
+    </f:facet>
+									<p:column headerText="#">
+										<h:outputText  />
+									</p:column>
+
+									<p:column headerText="Fecha">
+										<h:outputText />
+									</p:column>
+
+									<p:column headerText="Observaciones">
+										<h:outputText  />
+									</p:column>
+
+									<p:column headerText="Estado">
+										<h:outputText  />
+									</p:column>
+								</p:dataTable>
+						
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column colspan="4">
+							
+							<p:commandLink id="cmlCancelarEdit" immediate="true"
+								onclick="PF('dlg6').hide();" style="float:right;">
+								<p:graphicImage id="btnCEdit" title="#{comun['btn.cancelar']}"
+									styleClass="imgsBA" alt="#{comun['btn.editar']}"
+									url="${requestContextPath}/resources/images/cancel_f2.png" />
+								<p:resetInput target="display" />
+							</p:commandLink>
+						</p:column>
+						
+						
+					</p:row>
+				</p:panelGrid>
+
+			</h:form>
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

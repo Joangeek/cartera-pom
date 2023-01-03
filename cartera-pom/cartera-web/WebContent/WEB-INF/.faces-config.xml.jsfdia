@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
+  SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
+   PATH="/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#admin_acceso.xhtml" NAME="output"
+    PATH="/admin_acceso.xhtml" TARGET="rules:#admin_acceso.xhtml"
+    TITLE="home" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="estudiante::#indexe.xhtml" NAME="output1"
+    PATH="/indexe.xhtml" TARGET="rules:#indexe.xhtml" TITLE="estudiante" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="egresado::#indexg.xhtml" NAME="output2"
+    PATH="/indexg.xhtml" TARGET="rules:#indexg.xhtml" TITLE="egresado" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="empleador::#empleador.xhtml" NAME="output3"
+    PATH="/empleador.xhtml" TARGET="rules:#empleador.xhtml"
+    TITLE="empleador" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#empleador.xhtml" PATH="/empleador.xhtml"
+  SHAPE="512,449,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#indexg.xhtml" PATH="/indexg.xhtml"
+  SHAPE="512,337,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#indexe.xhtml" PATH="/indexe.xhtml"
+  SHAPE="512,225,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#admin_acceso.xhtml"
+  PATH="/admin_acceso.xhtml" SHAPE="512,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#facelets#templates#menu.xhtml"
+  PATH="/facelets/templates/menu.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#facelets#templates#menu.xhtml:0" NAME="item"
+   PATH="/facelets/templates/menu.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

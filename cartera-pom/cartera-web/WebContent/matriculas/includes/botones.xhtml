@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<p:commandLink
+	rendered="#{estudiantesMB.verProgramas or estudiantesMB.verRecibos}"
+	update=":content:pnlP   :formteba  :formTitle"
+	actionListener="#{estudiantesMB.lanzarRegresar()}">
+	<p:graphicImage id="btnR" styleClass="imgsBA"
+		title="#{comun['btn.regresar']}" alt="#{comun['btn.regresar']}"
+		url="${requestContexteath}/resources/images/back_f2.png" />
+</p:commandLink>
+
+
+<!-- BOTONES DE ESTUDIANTES -->
+
+<p:commandLink id="cmlFiltroEstu"
+	rendered="#{estudiantesMB.verEstudiantes}" onclick="PF('dlg2').show();">
+	<p:graphicImage title="#{comun['btn.filtrar']}" styleClass="imgsBA"
+		alt="#{comun['btn.filtrar']}"
+		url="${requestContexteath}/resources/images/Filter-List-icon.png" />
+</p:commandLink>
+
+<p:commandLink id="cmlProgramas"
+	rendered="#{estudiantesMB.verEstudiantes}"
+	update=":content:pnlP   :formteba :formTitle"
+	actionListener="#{estudiantesMB.verPorgramas()}">
+	<p:graphicImage id="btnVerProg" title="#{configurar['btn.programa']}"
+		styleClass="imgsBA" alt="#{configurar['btn.programa']}"
+		url="${requestContexteath}/resources/images/aspec_f2.png" />
+</p:commandLink>
+
+<!-- FIN BOTONES ESTUDIANTES -->
+<!-- BOTONES DE PROGRAMAS -->
+
+<p:commandLink id="cmlRecibo" rendered="#{estudiantesMB.verProgramas}"
+	update=":content:pnlP   :formteba :formTitle"
+	actionListener="#{estudiantesMB.verRecibos()}">
+	<p:graphicImage title="#{configurar['btn.recibos']}"
+		styleClass="imgsBA" alt="#{configurar['btn.recibos']}"
+		url="${requestContexteath}/resources/images/recibos_est.png" />
+</p:commandLink>
+
+<!-- FIN BOTONES PROGRAMAS -->
+<!-- BOTONES DE RECIBOS -->
+
+<p:commandLink id="cmlCrearRecibo"
+	rendered="#{estudiantesMB.verRecibos}"
+	update=":content:pnlP :formteba :formTitle">
+	<p:graphicImage title="#{comun['btn.nuevo']}" styleClass="imgsBA"
+		alt="#{comun['btn.nuevo']}"
+		url="${requestContexteath}/resources/images/recibo.png" />
+</p:commandLink>
+
+<p:commandLink id="cmlEditarRecibo"
+	rendered="#{estudiantesMB.verRecibos}" onclick="PF('dlg2').show();">
+	<p:graphicImage title="#{comun['btn.editar']}" styleClass="imgsBA"
+		alt="#{comun['btn.editar']}"
+		url="${requestContexteath}/resources/images/Filter-List-icon.png" />
+</p:commandLink>
+
+<p:commandLink id="btnDellRecibo" rendered="#{estudiantesMB.verRecibos}">
+	<p:graphicImage title="#{comun['btn.eliminar']}" styleClass="imgsBA"
+		alt="#{comun['btn.eliminar']}"
+		url="${requestContexteath}/resources/images/trash_f2.png" />
+	<p:confirm header="Confirmation"
+		message="#{comun['global.msg.lbl.confirm']}" icon="ui-icon-alert" />
+</p:commandLink>
+
+<!-- FIN BOTONES RECIBOS -->
+
+</html>

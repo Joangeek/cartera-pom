@@ -1,0 +1,135 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="BLOQUEAR ESTUDIANTES" />
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlbloqueo" onclick="PF('dlg7').show();">
+						<p:graphicImage id="btnB" title="#{comun['btn.bloqueo']}"
+							styleClass="imgsBL" alt="#{comun['btn.bloqueo']}"
+							url="${requestContexteath}/resources/images/bloqueo.png" />
+					</p:commandLink>
+
+					<p:commandLink id="lmcbloqueo" onclick="PF('dlg8').show();">
+						<p:graphicImage id="btnBe" title="#{comun['btn.imprimir']}"
+							styleClass="imgsBL" alt="#{comun['btn.imprimir']}"
+							url="${requestContexteath}/resources/images/print.png" />
+					</p:commandLink>
+
+
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<p:panel
+				header="#{configurar['page.header.titlebloquearestudiantes']}"
+				style="width:100% !important" 
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important">
+
+
+				<h:form>
+
+
+					<p:panelGrid columns="10" cellpadding="3"
+						style="width:100%; margin:0 auto;">
+
+
+						<h:outputLabel for="newperiodoBe"
+							value="#{configurar['lbl.bloquear_estudiante.periodo']}" />
+						<h:selectOneMenu id="newperiodoBe" required="true"
+							requiredMessage="#{comun['msg.validar.obligatorio']}"
+							styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+							<f:selectItem itemLabel="---- Seleccione ----"
+								itemValue="---- Seleccione ----" />
+						</h:selectOneMenu>
+						<p:message for="newperiodoBe" display="icon" />
+
+
+						<h:outputLabel for="newsedeBe"
+							value="#{configurar['lbl.bloquear_estudiante.sede']}" />
+						<h:selectOneMenu id="newsedeBe" required="true"
+							requiredMessage="#{comun['msg.validar.obligatorio']}"
+							styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+							<f:selectItem itemLabel="---- Seleccione ----"
+								itemValue="---- Seleccione ----" />
+						</h:selectOneMenu>
+						<p:message for="newsedeBe" display="icon" />
+
+						<h:outputLabel for="newparcialBe"
+							value="#{configurar['lbl.bloquear_estudiante.parcial']}" />
+						<h:selectOneMenu id="newparcialBe" required="true"
+							requiredMessage="#{comun['msg.validar.obligatorio']}"
+							styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+							<f:selectItem itemLabel="---- Seleccione ----"
+								itemValue="---- Seleccione ----" />
+						</h:selectOneMenu>
+						<p:message for="newparcialBe" display="icon" />
+
+
+						<p:commandLink id="cmlbuscar" onclick="PF('dlg9').show();">
+							<p:graphicImage id="btnB" title="#{comun['btn.buscar']}"
+								styleClass="imgsBus" alt="#{comun['btn.buscar']}"
+								url="${requestContexteath}/resources/images/buscar.png" />
+						</p:commandLink>
+
+					</p:panelGrid>
+
+
+					<p:dataTable var="Valores" rowIndexVar="rowIndex"
+						widgetVar="dtTable" paginatorAlwaysVisible="false"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginator="true" paginatorPosition="bottom" rows="5"
+						emptyMessage="#{comun['page.dtt.vacia']}" 
+						rowsPerPageTemplate="5,10,15,20,30,40,50,100,200">
+
+						<p:column
+							headerText="#{configurar['lbl.bloquear_estudiantes.programa']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.bloquear_estudiantes.estudiante']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.bloquear_estudiantes.identificacion']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.bloquear_estudiantes.novedades']}">
+							<h:outputText />
+						</p:column>
+
+
+					</p:dataTable>
+				</h:form>
+				<!-- Confirmacion -->
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

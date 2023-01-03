@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	<div>
+		<nav class="navbar navbar-inverse navbar-static-top">
+			<div class="container">
+				<div class="navbar-header" style="float:left !important; display: inline-flex;">
+					<a href="http://www.unicomfacauca.edu.co"
+						title="#{comun['page.header.title.link']}"> <p:graphicImage
+							id="imgLogo" title="#{comun['page.header.title']}"
+							alt="#{comun['page.header.title']}"
+							url="${requestContextPath}/resources/images/logo.png" />
+					</a>
+					<div id="divMenu" style="float:right !important;"> 
+						<ui:include src="/facelets/templates/menu.xhtml" />
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+</body>
+</html>

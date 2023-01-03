@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<p:dataTable value="#{programasMB.listarProgramas()}" var="ep"
+	rowIndexVar="rowIndex" widgetVar="dtTable" rowKey="#{ep.idEp}"
+	paginatorAlwaysVisible="false"
+	paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+	paginator="true" paginatorPosition="bottom" rows="5"
+	emptyMessage="#{comun['page.table.list.sin.resultados']}"
+	rowsPerPageTemplate="5,10,15,20,30,40,50,100,200"
+	selectionMode="single" 
+	selection="#{estudiantesMB.selectedEp}">
+
+	<p:column headerText="#{configurar['lbl.pecuniarios.num']}"
+		style="width:80px;text-align:left; font-weght:bold;">
+		<h:outputText value="#{rowIndex+1}" />
+	</p:column>
+	<p:column headerText="#{configurar['lbl.pecuniarios.programa']}">
+		<h:outputText value="#{ep.tblacaPrograma.nombre}" />
+	</p:column>
+
+	<p:column headerText="#{configurar['lbl.pecuniarios.sede']}">
+		<h:outputText value="#{ep.tblacaSede.nombre}" />
+	</p:column>
+	<p:column headerText="#{configurar['lbl.pecuniarios.codigo_snies']}">
+		<h:outputText value="#{ep.proConsecutivo}" />
+	</p:column>
+	<p:column
+		headerText="#{configurar['lbl.pecuniarios.fecha_inscripcion']}">
+		<h:outputText value="#{ep.fechaingreso}" />
+	</p:column>
+	<p:column headerText="#{configurar['lbl.pecuniarios.plan']}">
+		<h:outputText
+			value="#{ep.tblacaPlanestudio.anioPlan()}  -  #{ep.tblacaPlanestudio.nombre} " />
+	</p:column>
+	<p:column headerText="#{configurar['lbl.pecuniarios.estado']}">
+		<h:outputText value="#{ep.estado}" />
+	</p:column>
+</p:dataTable>
+
+
+</html>

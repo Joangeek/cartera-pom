@@ -1,0 +1,152 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="PAGO CUOTA INICIAL"
+				url="${requestContexteath}/resources/images/Filter-List-icon.png" />
+		</ui:define>
+
+
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlGenerarRecibo" onclick="PF('dlg1').show();">
+						<p:graphicImage id="btnGR" title="#{comun['btn.generarrecibo']}"
+							styleClass="imgsBA" alt="#{comun['btn.generarrecibo']}"
+							url="${requestContexteath}/resources/images/generarR.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlguardar" onclick="PF('dlg3').show();">
+						<p:graphicImage id="btndr" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.guardar']}"
+							url="${requestContexteath}/resources/images/save_f2.png" />
+					</p:commandLink>
+
+
+
+					<p:commandLink id="cmlCancelar" onclick="PF('dlg2').show();">
+						<p:graphicImage id="btnC" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.cancelar']}"
+							url="${requestContexteath}/resources/images/cancelarR.png" />
+					</p:commandLink>
+
+
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+
+
+
+		<ui:define name="content">
+			<p:panel header="#{configurar['page.header.titlefinanciar']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+				footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+				<p:outputPanel>
+
+					<p:panelGrid columns="6" cellpadding="4"
+						style="width:100%; margin:0 auto;">
+						<f:facet name="header">
+							<p:outputLabel value="Datos Basicos del Estudiante" />
+						</f:facet>
+
+						<h:outputLabel style="width:30%"
+							value="#{configurar['lbl.matriculas.nombree']}" />
+						<p:outputLabel value="NOMBRE DEL ESTUDIANTE" />
+
+
+						<h:outputLabel for="Newid3" style="width:30%"
+							value="#{configurar['lbl.matriculas.identificacion']}" />
+						<p:outputLabel value="NOMBRE DEL ESTUDIANTE" />
+
+
+						<h:outputLabel for="Newprograma" style="width:30%"
+							value="#{configurar['lbl.matriculas.programa']}" />
+						<h:outputLabel value="PROGRAMA" />
+
+					</p:panelGrid>
+
+					<br />
+
+
+					<p:panelGrid columns="6" cellpadding="4"
+						style="width:100%; margin:0 auto;">
+						<f:facet name="header">
+							<p:outputLabel value="Pago Credito Financiero" />
+						</f:facet>
+
+						<h:outputLabel value="#{configurar['lbl.matriculas.nrecibo']}" />
+						<p:outputLabel value="123456" />
+						<h:outputLabel />
+
+						<h:outputLabel value="#{configurar['lbl.matriculas.limitep']}" />
+						<p:outputLabel value="12/12/2017" />
+						<h:outputLabel />
+
+						<p:outputLabel for="Fechaso"
+							value="Fecha de Expedición #{comun['global.asterisco']}" />
+						<p:calendar id="Fechaso" value="#{calendarView.date3}"
+							requiredMessage="#{comun['global.asterisco']}"
+							style="width:100px !important;" showOn="button"
+							pattern="dd-MM-yyyy" mask="true" />
+						<p:message for="Fechaso" id="msgEditFechaso" display="icon" />
+
+
+						<p:outputLabel for="Fechan"
+							value="Fecha de Pago #{comun['global.asterisco']}" />
+						<p:calendar id="Fechan" value="#{calendarView.date3}"
+							requiredMessage="#{comun['global.asterisco']}"
+							style="width:100px !important;" showOn="button"
+							pattern="dd-MM-yyyy" mask="true" />
+						<p:message for="Fechan" id="msgEditFechan" display="icon" />
+
+						<h:outputLabel value="#{configurar['lbl.matriculas.vcuota']}" />
+						<p:outputLabel value="12/12/2017" />
+						<h:outputLabel />
+
+						<h:outputLabel value="#{configurar['lbl.matriculas.seguro']}" />
+						<p:outputLabel value="11.450" />
+						<h:outputLabel />
+
+
+						<h:outputLabel value="#{configurar['lbl.matriculas.vpagar']}" />
+						<p:outputLabel value="154654" />
+						<h:outputLabel />
+
+						<h:outputLabel />
+						<h:outputLabel />
+						<h:outputLabel />
+
+					</p:panelGrid>
+
+
+				</p:outputPanel>
+
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+			</p:panel>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

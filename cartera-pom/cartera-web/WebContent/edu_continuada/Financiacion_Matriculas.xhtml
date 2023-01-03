@@ -1,0 +1,294 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf"
+				value="FINANCIACIÓN DE MATRICULAS "
+				url="${requestContexteath}/resources/images/Filter-List-icon.png" />
+		</ui:define>
+
+
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlGenerarRecibo" onclick="PF('dlg1').show();">
+						<p:graphicImage id="btnGR" title="#{comun['btn.generarrecibo']}"
+							styleClass="imgsBA" alt="#{comun['btn.generarrecibo']}"
+							url="${requestContexteath}/resources/images/generarR.png" />
+					</p:commandLink>
+
+
+					<p:commandLink id="cmlCancelar" onclick="PF('dlg2').show();">
+						<p:graphicImage id="btnC" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.cancelar']}"
+							url="${requestContexteath}/resources/images/cancelarR.png" />
+					</p:commandLink>
+
+
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+
+
+		<ui:define name="content">
+			<p:panel header="#{configurar['page.header.titlefinanciar']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+				footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+				<p:outputPanel>
+
+					<p:panelGrid columns="6" cellpadding="4"
+						style="width:100%; margin:0 auto;">
+						<f:facet name="header">
+							<p:outputLabel value="Datos Basicos del Estudiante" />
+						</f:facet>
+
+						<h:outputLabel style="width:30%"
+							value="#{configurar['lbl.matriculas.nombree']}" />
+						<p:outputLabel value="NOMBRE DEL ESTUDIANTE" />
+
+
+						<h:outputLabel for="Newid3" style="width:30%"
+							value="#{configurar['lbl.matriculas.identificacion']}" />
+						<p:outputLabel value="NOMBRE DEL ESTUDIANTE" />
+
+
+						<h:outputLabel for="Newprograma" style="width:30%"
+							value="#{configurar['lbl.matriculas.programa']}" />
+						<h:outputLabel value="PROGRAMA" />
+
+					</p:panelGrid>
+
+					<br />
+
+
+					<p:panelGrid style="width:100%; margin:0 auto;">
+						<p:row>
+							<p:column style="width:50%">
+								<p:panelGrid columns="3" cellpadding="4"
+									style="width:100%; margin:0 auto;">
+									<f:facet name="header">
+										<p:outputLabel value="Tipo de Matricula" />
+									</f:facet>
+
+
+
+									<h:outputLabel for="tipom"
+										value="#{configurar['lbl.matriculas.tipodomatricula']}" />
+
+									<h:selectOneMenu id="tipom" required="true"
+										requiredMessage="#{comun['msg.validar.obligatorio']}"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+										<f:selectItem itemLabel="---- Seleccione ---"
+											itemValue="---- Seleccione ----" />
+										<f:selectItem itemLabel="Normal" itemValue="Normal" />
+										<f:selectItem itemLabel="Beca" itemValue="Beca" />
+										<f:selectItem itemLabel="Credito" itemValue="Credito" />
+									</h:selectOneMenu>
+									<p:message for="tipom" display="icon" />
+
+									<h:outputLabel for="resolucion"
+										value="#{configurar['lbl.matriculas.resolucion']}" />
+									<p:inputText id="resolucion"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="resolucion" display="icon" />
+
+									<h:outputLabel for="porcentaje"
+										value="#{configurar['lbl.matriculas.porcentajebeca']}" />
+									<p:inputText id="porcentaje"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="porcentaje" display="icon" />
+
+									<h:outputLabel for="creditos"
+										value="#{configurar['lbl.matriculas.ncreditos']}" />
+									<p:inputText id="creditos"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="creditos" display="icon" />
+
+
+
+
+								</p:panelGrid>
+							</p:column>
+
+							<p:column style="width:50%">
+								<p:panelGrid columns="3" cellpadding="4"
+									style="width:100%; margin:0 auto;">
+									<f:facet name="header">
+										<p:outputLabel value="Entidad Finanaciera" />
+									</f:facet>
+
+									<h:outputLabel for="entidad"
+										value="#{configurar['lbl.matriculas.entidad']}" />
+
+									<h:selectOneMenu id="entidad" required="true"
+										requiredMessage="#{comun['msg.validar.obligatorio']}"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+										<f:selectItem itemLabel="---- Seleccione ---"
+											itemValue="---- Seleccione ----" />
+									</h:selectOneMenu>
+									<p:message for="entidad" display="icon" />
+
+									<p:outputLabel for="Fechaso"
+										value="Fecha de Solicitud #{comun['global.asterisco']}" />
+									<p:calendar id="Fechaso" value="#{calendarView.date3}"
+										requiredMessage="#{comun['global.asterisco']}"
+										style="width:100px !important;" showOn="button"
+										pattern="dd-MM-yyyy" mask="true" />
+									<p:message for="Fechaso" id="msgEditFechaso" display="icon" />
+
+
+									<h:outputLabel for="valorp"
+										value="#{configurar['lbl.matriculas.vpagar']}" />
+									<p:inputText id="valorp"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="valorp" display="icon" />
+
+								</p:panelGrid>
+
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column style="width:50%">
+								<p:panelGrid columns="3" cellpadding="4"
+									style="width:100%; margin:0 auto;">
+									<f:facet name="header">
+										<p:outputLabel value="Convenio con la Entidad" />
+									</f:facet>
+
+
+									<h:outputLabel for="cuotainicial"
+										value="#{configurar['lbl.matriculas.cuotai']}" />
+									<p:inputText id="cuotainicial"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="cuotainicial" display="icon" />
+
+									<p:outputLabel for="Fechain"
+										value="Fecha Limite de Pago Cuota Inicial#{comun['global.asterisco']}" />
+									<p:calendar id="Fechain" value="#{calendarView.date3}"
+										requiredMessage="#{comun['global.asterisco']}"
+										style="width:100px !important;" showOn="button"
+										pattern="dd-MM-yyyy" mask="true" />
+									<p:message for="Fechain" id="msgEditFechain" display="icon" />
+
+									<h:outputLabel for="valorfinanciar"
+										value="#{configurar['lbl.matriculas.valorfinan']}" />
+									<p:inputText id="valorfinanciar"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+										onkeyup="javascript:this.value=this.value.toUpperCase();"
+										required="true"
+										label="#{encuestas['lbl.confEncuestas.pregunta']}"
+										requiredMessage="#{comun['global.asterisco']}">
+										<p:ajax event="keyup" onstart="true" />
+									</p:inputText>
+									<p:message for="valorfinanciar" display="icon" />
+
+
+									<h:outputLabel for="ncuotas"
+										value="#{configurar['lbl.matriculas.ncuotas']}" />
+
+									<h:selectOneMenu id="ncuotas" required="true"
+										requiredMessage="#{comun['msg.validar.obligatorio']}"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+										<f:selectItem itemLabel="---- Seleccione ---"
+											itemValue="---- Seleccione ----" />
+									</h:selectOneMenu>
+									<p:message for="ncuotas" display="icon" />
+
+
+
+
+									<h:outputLabel />
+								</p:panelGrid>
+
+							</p:column>
+
+							<p:column style="width:50%">
+								<p:dataTable var="Cuotas">
+									<f:facet name="header">
+         Financiación por Cuotas
+    </f:facet>
+									<p:column headerText="Cuotas">
+										<h:outputText  />
+									</p:column>
+
+									<p:column headerText="Valor">
+										<h:outputText />
+									</p:column>
+
+									<p:column headerText="Interes">
+										<h:outputText  />
+									</p:column>
+
+									<p:column headerText="Fecha Limite de Pago">
+										<h:outputText  />
+									</p:column>
+								</p:dataTable>
+
+							</p:column>
+
+
+						</p:row>
+					</p:panelGrid>
+
+
+				</p:outputPanel>
+
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+			</p:panel>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

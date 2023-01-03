@@ -1,0 +1,135 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="PAGO CUOTA No 1"
+				url="${requestContexteath}/resources/images/Filter-List-icon.png" />
+		</ui:define>
+
+
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					
+					<p:commandLink id="cmlguardar" onclick="PF('dlg3').show();">
+						<p:graphicImage id="btndr" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.guardar']}"
+							url="${requestContexteath}/resources/images/save_f2.png" />
+					</p:commandLink>
+
+
+
+					<p:commandLink id="cmlCancelar" onclick="PF('dlg2').show();">
+						<p:graphicImage id="btnC" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.cancelar']}"
+							url="${requestContexteath}/resources/images/cancelarR.png" />
+					</p:commandLink>
+
+
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+
+
+
+		<ui:define name="content">
+			<p:panel header="#{comun['page.header.titlepagocuotainicial']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important">
+
+				<p:outputPanel>
+
+					<p:panelGrid columns="7" cellpadding="4"
+						style="width:100%; margin:0 auto;">
+						<f:facet name="header">
+							<p:outputLabel value="Datos Basicos del Estudiante" />
+						</f:facet>
+
+						<h:outputLabel 
+							value="#{configurar['lbl.matriculas.nombree']}" />
+						<p:outputLabel value="NOMBRE DEL ESTUDIANTE" />
+
+
+						<h:outputLabel for="Newid3" 
+							value="#{configurar['lbl.matriculas.identificacion']}" />
+						<p:outputLabel value="NOMBRE DEL ESTUDIANTE" />
+
+
+						<h:outputLabel for="Newprograma"
+							value="#{configurar['lbl.matriculas.programa']}" />
+						<h:outputLabel value="Ing de Sistemas" />
+
+					</p:panelGrid>
+
+					<br />
+
+
+					<p:panelGrid style="width:100%; margin:0 auto;">
+						<p:row>
+							<p:column style="width:50%">
+								<p:panelGrid columns="8"
+									style="width:100%; margin:0 auto;">
+									<f:facet name="header">
+										<p:outputLabel value="Pago de Credito Financiero" />
+									</f:facet>
+
+
+
+									<h:outputLabel
+										value="#{configurar['lbl.matriculas.fecha_expedicion']}" /> 
+									<p:outputLabel value="133333" />
+									
+									<h:outputLabel
+										value="#{configurar['lbl.matriculas.nrecibo']}" />
+									<p:outputLabel value="133333" />
+
+									<h:outputLabel
+										value="#{configurar['lbl.matriculas.ordinario']}" />
+									<p:outputLabel value="600.000" />
+									
+																											
+							<h:outputLabel for="newfecha_pago"
+							value="#{configurar['lbl.matriculas.fecha_pago']}" /> 
+						<h:selectOneMenu id="newfecha_pago" required="true"
+							requiredMessage="#{comun['msg.validar.obligatorio']}"
+							styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+							<f:selectItem itemLabel="---- Seleccione ----"
+								itemValue="---- Seleccione ----" />
+						</h:selectOneMenu>
+						<p:message for="newfecha_pago" display="icon" />
+												  								
+								</p:panelGrid>
+							</p:column>
+						</p:row>
+
+					</p:panelGrid>
+					
+				</p:outputPanel>
+
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+			</p:panel>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

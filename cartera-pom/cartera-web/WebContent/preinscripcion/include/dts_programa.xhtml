@@ -1,0 +1,89 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style=" margin: 0 auto;">
+		<p:panelGrid columns="6" cellpadding="5" layout="grid"
+			style="width:100%;">
+
+			<p:column>
+				<p:outputLabel for="periodo"
+					value="#{comun['page.pre_ins.periodo']}" />
+			</p:column>
+			<p:column>
+				<h:outputText id="periodo" value="#{preinsMB.periodo.descripcion}" />
+
+			</p:column>
+			<p:column>
+				<p:message for="periodo" />
+			</p:column>
+
+
+			<p:column>
+				<p:outputLabel for="municipio"
+					value="#{comun['page.pre_ins.sede.municipio']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="municipio" required="true"
+					value="#{preinsMB.sedeSelected}"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+
+					<p:ajax listener="#{preinsMB.programasPorMunicipio()}"
+						update="programa" />
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{preinsMB.listaSedes}" var="var"
+						itemLabel="#{var.nombre}" />
+					<f:converter converterId="GenericConvertEntity" />
+				</h:selectOneMenu>
+			</p:column>
+			<p:column>
+				<p:message for="municipio" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel for="programa"
+					value="#{comun['page.pre_ins.programa']}" />
+			</p:column>
+			<p:column>
+				<h:selectOneMenu id="programa" required="true" filter="true"
+					filterMatchMode="contains" value="#{preinsMB.sedePrograma}"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{preinsMB.listaSedeProgramas}" var="var"
+						itemLabel="#{var.tblacaPrograma.nombre}" />
+					<f:converter converterId="GenericConvertEntity" />
+				</h:selectOneMenu>
+			</p:column>
+			<p:column>
+				<p:message for="programa" />
+			</p:column>
+
+			<p:outputLabel for="jornada" value="#{comun['page.pre_ins.jornada']}" />
+
+			<p:column>
+				<h:selectOneMenu id="jornada" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="#{comun['msg.select']}" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{preinsMB.listaJornadas}" var="var"
+						itemLabel="#{var.descripcion}" />
+					<f:converter converterId="GenericConvertEntity" />
+				</h:selectOneMenu>
+			</p:column>
+
+			<p:column>
+				<p:message for="jornada" />
+			</p:column>
+
+		</p:panelGrid>
+	</p:panel>
+</h:body>
+</html>

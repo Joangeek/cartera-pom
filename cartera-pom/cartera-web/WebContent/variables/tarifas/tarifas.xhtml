@@ -1,0 +1,144 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="TARÍFAS" />
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+
+					<p:commandLink id="cmlCrear" process="@this" update=":formDialogs"
+						oncomplete="PF('dlg1').show();">
+						<p:graphicImage id="btnN" title="#{comun['btn.nuevo']}"
+							styleClass="imgsBA" alt="#{comun['btn.nuevo']}"
+							url="${requestContexteath}/resources/images/new_f2.png" />
+					</p:commandLink>
+
+					<p:commandLink process="@this" immediate="true"
+						onclick="$('[id$=BtnEditSelecTarifas]').click();" id="cmlEditar">
+						<p:graphicImage id="btnE" title="#{comun['btn.editar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContexteath}/resources/images/edit_f2.png" />
+					</p:commandLink>
+
+					<p:commandLink id="btnDell"
+						onclick="$('[id$=BtnDellSelecTarifas]').click();">
+						<p:graphicImage id="btnEl" title="#{comun['btn.eliminar']}"
+							styleClass="imgsBA" alt="#{comun['btn.eliminar']}"
+							url="${requestContexteath}/resources/images/trash_f2.png" />
+						<p:confirm header="Confirmation"
+							message="#{comun['global.msg.lbl.confirm']}" icon="ui-icon-alert" />
+					</p:commandLink>
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+
+		<ui:define name="content">
+
+			<p:panel header="#{configurar['page.header.titleTarifas']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+				footer="">
+
+				<h:form id="formDialogs">
+					<p:dialog header="Tarifa: Nuevo" widgetVar="dlg1" minHeight="40"
+						modal="true">
+
+						<ui:include src="/variables/tarifas/includes/nuevo.xhtml" />
+					</p:dialog>
+				</h:form>
+
+				<h:form id="formDialogsEdit" enctype="multipart/form-data">
+
+					<p:dialog header="Tarifa: Editar" widgetVar="dlg2" minHeight="40"
+						modal="true">
+						<ui:include src="/variables/tarifas/includes/editar.xhtml" />
+					</p:dialog>
+				</h:form>
+
+				<h:form id="form">
+
+					<p:dataTable id="tarifasList" var="tarifas" rowIndexVar="rowIndex"
+						value="#{tarifasMB.listaTarifas}"
+						filteredValue="#{tarifasMB.listaTarifasFilter}"
+						rowKey="#{tarifas.idtarifa}" selection="#{tarifasMB.selected}"
+						selectionMode="single" widgetVar="dtTable"
+						paginatorAlwaysVisible="false"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginator="true" paginatorPosition="bottom" rows="5"
+						emptyMessage="#{comun['page.table.list.sin.resultados']}"
+						rowsPerPageTemplate="5,10,15,20,30,40,50,100,200">
+
+						<p:column style="width:100px;text-align:center">
+							<f:facet name="header">
+								<h:outputText value="#{comun['lbl.estado.numero']}" />
+							</f:facet>
+							<p:outputLabel value="#{rowIndex+1}" styleClass="textTable" />
+
+						</p:column>
+
+
+						<p:column
+							headerText="#{configurar['lbl.tarifas.fechaAprobacion']}"
+							filterBy="#{tarifas.fechaAprobacion}" filterMatchMode="contains">
+							<h:outputText value="#{tarifas.fechaAprobacion}" />
+						</p:column>
+
+						<p:column headerText="#{comun['lbl.periodo']}"
+							filterBy="#{tarifas.tblacaPeriodo}" filterMatchMode="contains">
+							<h:outputText value="#{tarifas.tblacaPeriodo.descripcion}" />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.tarifas.descripciion']}"
+							filterBy="#{tarifas.descripcion}" filterMatchMode="contains">
+							<h:outputText value="#{tarifas.descripcion}" />
+						</p:column>
+
+						<f:facet name="footer">
+							<p:commandButton id="BtnEditSelecTarifas" disabled="true"
+								style="display:none;" process="tarifasList"
+								icon="ui-icon-search" value="View" update=":formDialogsEdit"
+								oncomplete="PF('dlg2').show();" />
+
+							<p:commandButton id="BtnDellSelecTarifas" disabled="false"
+								style="display:none;" icon="ui-icon-search"
+								process="tarifasList" actionListener="#{tarifasMB.delete()}"
+								value="Dell" />
+
+
+						</f:facet>
+
+					</p:dataTable>
+				</h:form>
+
+				<!-- Confirmacion -->
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+
+
+	</ui:composition>
+</h:body>
+</html>

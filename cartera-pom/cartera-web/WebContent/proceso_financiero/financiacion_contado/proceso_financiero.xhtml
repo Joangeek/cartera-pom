@@ -1,0 +1,130 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf"
+				value="MATRICULAS ESTUDIANTES REGULARES"/>
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlFiltro" onclick="PF('dlg4').show();">
+						<p:graphicImage id="btnFIL" title="#{comun['btn.filtro']}"
+							styleClass="imgsBA" alt="#{comun['btn.filtro']}"
+							url="${requestContexteath}/resources/images/Filter-List-icon.png" />
+					</p:commandLink> 
+
+
+					<p:commandLink id="cmlGenerarRecibos" onclick="PF('dlg5').show();">
+						<p:graphicImage id="btnCGR" title="#{comun['btn.generarrecibo']}" 
+							styleClass="imgsBA" alt="#{comun['btn.generarrecibo']}"
+							url="${requestContexteath}/resources/images/recibu.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlFinancear" onclick="PF('dlg3').show();">
+						<p:graphicImage id="btnFI" title="#{comun['btn.financiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.financiar']}"
+							url="${requestContexteath}/resources/images/financear.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlPsgos" onclick="PF('dlg1').show();">
+						<p:graphicImage id="btnN" title="#{comun['btn.pagos']}"
+							styleClass="imgsBA" alt="#{comun['btn.pagos']}"
+							url="${requestContexteath}/resources/images/pago.png" />
+					</p:commandLink>
+					<p:commandLink id="cmlRecibos" onclick="PF('dlg2').show();">
+						<p:graphicImage id="btnRe" title="#{comun['btn.recibos']}"
+							styleClass="imgsBA" alt="#{comun['btn.recibos']}"
+							url="${requestContexteath}/resources/images/recibe.png" /> 
+					</p:commandLink>
+
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<p:panel header="#{comun['page.header.titleMatriculas']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important">
+
+
+				<h:form>
+
+					<p:dialog header="Matriculas Estudiantes: Filtro de Busqueda"
+						modal="true" widgetVar="dlg4" minHeight="40">
+
+						<ui:include
+							src="/proceso_financiero/financiacion_contado/include/filtro.xhtml" />
+					</p:dialog>
+
+
+
+
+
+					<p:dataTable var="MatriculasEstudiantes"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+						paginator="true" rows="10" style="margin-bottom:20px" paginatorPosition="bottom">
+
+						<p:column style="width:16px;text-align:center">
+							<p:outputLabel value="#{rowIndex+1}" styleClass="textTable" />
+						</p:column>
+						<p:column headerText="#{configurar['lbl.matriculas.numero']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.matriculas.identificacion']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.matriculas.Estudiantes']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.matriculas.programa']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.matriculas.sede']}">
+							<h:outputText />
+						</p:column>
+
+
+
+						<p:column headerText="#{configurar['lbl.matriculas.Jornada']}">
+							<h:outputText />
+						</p:column>
+
+
+						<p:column headerText="#{configurar['lbl.matriculas.pago']}">
+							<h:outputText />
+						</p:column>
+
+
+
+					</p:dataTable>
+				</h:form>
+				<!-- Confirmacion -->
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

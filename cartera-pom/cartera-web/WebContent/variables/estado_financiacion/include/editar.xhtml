@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:100% !important"
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+		<p:outputPanel>
+
+			<p:panelGrid id="gridEdit" columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+
+				<h:outputLabel for="Newnombreeditar"
+					value="#{configurar['lbl.estado.nombree']} #{comun['global.asterisco']}" />
+				<p:inputText id="Newnombreeditar"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.asterisco']}"
+					value="#{estadoFinanciacionMB.selected.nombre}">
+
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newnombreeditar" display="text" />
+
+				<h:outputLabel for="estadoEdit"
+					value="#{configurar['lbl.bancos.estadob']} #{comun['global.asterisco']}" />
+
+				<p:selectOneButton id="estadoEdit"
+					requiredMessage="#{comun['global.msg.seleccionar.item']}"
+					value="#{estadoFinanciacionMB.selected.estado}" required="true">
+					<f:selectItem itemValue="1"
+						itemLabel="#{comun['lbl.estado.activo']}" />
+					<f:selectItem itemValue="0"
+						itemLabel="#{comun['lbl.estado.inactivo']}" />
+					<p:ajax update="estadoEdit" event="change" onstart="true" />
+				</p:selectOneButton>
+				<p:message for="estadoEdit" display="text" />
+
+				<f:facet name="footer">
+					<p:commandLink id="cmlActualizar" update="gridEdit"
+						action="#{estadoFinanciacionMB.update()}">
+						<p:graphicImage id="btnP" title="#{comun['btn.actualizar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+					
+					<p:commandLink id="cmlCancelareditar" immediate="true"
+						onclick="PF('dlg2').hide();" style="float:right;">
+						<p:graphicImage id="btnJ" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

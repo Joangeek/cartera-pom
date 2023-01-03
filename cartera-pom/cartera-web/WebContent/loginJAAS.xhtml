@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+</head>
+<ui:composition template="/facelets/templates/templateLogin.xhtml">
+
+	<ui:define name="menu">
+		<div id="divLogo">
+			<p:graphicImage id="imgLogo" title="Unicomfacauca"
+				alt="Unicomfacauca"
+				url="${requestContextPath}/resources/images/Logo_.png" />
+		</div>
+	</ui:define>
+	<ui:define name="contenido">
+		<div align="center">
+			<h:form id="j_security_check" action="j_security_check" method="post"
+				onsubmit="document.getElementById('j_security_check').action='j_security_check';"
+				prependId="false">
+				<p:panel id="pnlIngreso" header="#{comun['page.login.lbl.ingreso']}"
+					style="width: 360px;">
+
+					<h:panelGrid id="loginPanel" columns="3">
+						<h:outputText value="#{comun['page.login.lbl.usuario']} *" />
+
+						<p:inputText id="j_username" required="true"
+							value="#{loginBean.uname}"
+							requiredMessage="#{comun['page.login.lbl.campo.requerido']}">
+							<p:ajax update="msgUser" event="keyup" onstart="true" />
+						</p:inputText>
+						<p:message for="j_username" id="msgUser" />
+
+						<h:outputText value="#{comun['page.login.lbl.clave']} *" /> 
+
+						<p:password id="j_password" value="#{loginBean.password}"
+							feedback="false" required="true"
+							requiredMessage="#{comun['page.login.lbl.campo.requerido']}">
+							<p:ajax update="msgPass" event="keyup" onstart="true" />
+						</p:password>
+						<p:message for="j_password" id="msgPass" />
+						<!--<f:facet name="footer">
+							<h:commandButton value="Login"class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-button-text ui-c" />
+						</f:facet>-->
+						<f:facet name="footer">
+							<h:panelGroup
+								style="display:block; text-align:center; margin-top:15px;">
+								<p:spacer />
+								<p:spacer />
+								<p:commandButton id="submit"
+									value="#{comun['page.login.btn.entrar']}" ajax="false" />
+								<!--  <input type="submit" value="#{comun['page.login.btn.entrar']}"
+									onclick="if(document.getElementById('j_password').value='')alert('vacio');" />-->
+							</h:panelGroup>
+						</f:facet>
+					</h:panelGrid>
+
+				</p:panel>
+			</h:form>
+			<!-- 
+			<h:form id="login"
+            onsubmit="document.getElementById('login').action='j_security_check';"
+            prependId="false">
+
+            
+
+            <p:dialog id="loginDial" header="Login page"
+                widgetVar="loginDialog" width="400" height="130" visible="true"
+                closable="false" draggable="false" resizable="false">
+                <h:panelGrid columns="2" style="margin: 0 auto;">
+                    <p:outputLabel for="j_username" value="Username:" />
+                    <p:inputText id="j_username" name="j_username" required="true" />
+                    <p:outputLabel for="j_password" value="Password:" />
+                    <p:password id="j_password" name="j_password" required="true" />
+                    <p:outputLabel value=" " />
+                    <p:commandButton id="submit" value="Login" ajax="false" />
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>-->
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

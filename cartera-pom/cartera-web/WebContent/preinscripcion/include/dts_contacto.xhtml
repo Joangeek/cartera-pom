@@ -1,0 +1,81 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style=" margin: 0 auto;">
+
+		<p:panelGrid columns="6" cellpadding="5" layout="grid"
+			style="width:100%;">
+			<p:column>
+				<p:outputLabel for="tel_fijo"
+					value="#{comun['page.pre_ins.telefono.fijo']}" />
+			</p:column>
+			<p:column>
+				<h:inputText id="tel_fijo" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					validatorMessage="#{comun['msg.validar.formato']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:validateRegex pattern="[0-9]{7,10}" />
+				</h:inputText>
+			</p:column>
+			<p:column>
+				<p:message for="tel_fijo" />
+			</p:column>
+			<p:column>
+				<p:outputLabel for="tel_celular"
+					value="#{comun['page.pre_ins.telefono.celular']}" />
+			</p:column>
+			<p:column>
+				<h:inputText id="tel_celular" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					validatorMessage="#{comun['msg.validar.formato']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:validateRegex pattern="[0-9]{10,10}" />
+				</h:inputText>
+			</p:column>
+			<p:column>
+				<p:message for="tel_celular" />
+			</p:column>
+			<p:column>
+				<p:outputLabel for="email" value="#{comun['page.pre_ins.email']}">
+				</p:outputLabel>
+			</p:column>
+			<p:column>
+				<h:inputText id="email" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					validatorMessage="#{comun['msg.validar.formato']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+				</h:inputText>
+
+			</p:column>
+			<p:column>
+				<p:message for="email" />
+			</p:column>
+			<p:column>
+				<p:outputLabel for="email_valid"
+					value="#{comun['page.pre_ins.email.validacion']}" />
+			</p:column>
+			<p:column>
+				<h:inputText id="email_valid" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					validatorMessage="#{comun['msg.validar.formato']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+				</h:inputText>
+
+			</p:column>
+			<p:column>
+				<p:message for="email_valid" />
+			</p:column>
+		</p:panelGrid>
+	</p:panel>
+</h:body>
+</html>

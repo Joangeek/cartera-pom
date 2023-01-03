@@ -1,0 +1,185 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:100% !important"
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+		<p:outputPanel>
+
+			<p:panelGrid id="gridEdit" columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+
+
+
+				<h:outputLabel for="Ttipoestudiante"
+					value="#{configurar['lbl.descuentos.tipoestudiente']} #{comun['global.asterisco']}" />
+
+				<p:selectOneButton id="Ttipoestudiante"
+					requiredMessage="#{comun['global.msg.seleccionar.item']}"
+					value="#{descuentosMB.selected.tipoEstudiante}" required="true">
+					<f:selectItem itemValue="1"
+						itemLabel="#{comun['lbl.descuentos.tipoestudiente1']}" />
+					<f:selectItem itemValue="2"
+						itemLabel="#{comun['lbl.descuentos.tipoestudiente2']}" />
+					<p:ajax update="Ttipoestudiante" event="change" onstart="true" />
+				</p:selectOneButton>
+				<p:message for="Ttipoestudiante" display="text" />
+
+
+				<h:outputLabel for="Ttipodescuento"
+					value="#{configurar['lbl.descuentos.newtipodescuento']}" />
+
+				<p:selectOneButton id="Ttipodescuento"
+					requiredMessage="#{comun['global.msg.seleccionar.item']}"
+					value="#{descuentosMB.selected.tipoDescuento}" required="true">
+					<f:selectItem itemValue="1"
+						itemLabel="#{comun['lbl.descuentos.tipoDescuento1']}" />
+					<f:selectItem itemValue="2"
+						itemLabel="#{comun['lbl.descuentos.tipoDescuento2']}" />
+					<f:selectItem itemValue="3"
+						itemLabel="#{comun['lbl.descuentos.tipoDescuento3']}" />
+					<p:ajax update="Ttipodescuento" event="change" onstart="true" />
+				</p:selectOneButton>
+				<p:message for="Ttipodescuento" display="text" />
+
+
+				<h:outputLabel for="Tcategoriacomfacauca"
+					value="#{configurar['lbl.descuentos.newcategoria']}" />
+
+				<h:selectOneMenu id="Tcategoriacomfacauca" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					value="#{descuentosMB.selected.tblmerCategoriaComfacauca}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="width:125px">
+					<f:selectItem
+						itemLabel="#{descuentosMB.selected.tblmerCategoriaComfacauca.sigla}"
+						itemValue="#{descuentosMB.selected.tblmerCategoriaComfacauca}" />
+					<f:selectItems value="#{descuentosMB.listaCategoriasComfa}"
+						var="var" itemLabel="#{var.sigla}" />
+					<f:converter converterId="GenericConvertEntity" />
+					<p:ajax update="Tcategoriacomfacauca" event="change" onstart="true" />
+				</h:selectOneMenu>
+				<p:message for="Tcategoriacomfacauca" display="text" />
+
+				<h:outputLabel for="Testrato"
+					value="#{configurar['lbl.descuentos.estrato']}" />
+
+				<h:selectOneMenu id="Testrato" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					value="#{descuentosMB.selected.tblEstrato}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="width:125px">
+					<f:selectItem itemLabel="#{descuentosMB.selected.tblEstrato.alias}"
+						itemValue="#{descuentosMB.selected.tblEstrato}" />
+					<f:selectItems value="#{descuentosMB.listaEstratos}" var="var"
+						itemLabel="#{var.descripcion}" />
+					<f:converter converterId="GenericConvertEntity" />
+					<p:ajax update="Testrato" event="change" onstart="true" />
+				</h:selectOneMenu>
+				<p:message for="Testrato" display="text" />
+
+				<h:outputLabel for="Ttarifa"
+					value="#{configurar['lbl.descuentos.newtarifa']}" />
+
+				<h:selectOneMenu id="Ttarifa" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					value="#{descuentosMB.selected.tblfinTarifa}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="width:125px">
+					<f:selectItem
+						itemLabel="#{descuentosMB.selected.tblfinTarifa.descripcion}"
+						itemValue="#{descuentosMB.selected.tblfinTarifa}" />
+					<f:selectItems value="#{descuentosMB.listaTarifas}" var="var"
+						itemLabel="#{var.descripcion}" />
+					<f:converter converterId="GenericConvertEntity" />
+					<p:ajax update="Ttarifa" event="change" onstart="true" />
+				</h:selectOneMenu>
+				<p:message for="Ttarifa" display="text" />
+
+
+
+				<h:outputLabel for="newDescripcion"
+					value="#{configurar['lbl.descuentos.newdescripcion']}" />
+
+				<p:inputTextarea id="newDescripcion"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					value="#{descuentosMB.selected.descripcion}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputTextarea>
+				<p:message for="newDescripcion" display="icon" />
+
+
+
+				<h:outputLabel for="Tsede"
+					value="#{configurar['lbl.descuentos.sededescuentos']}" />
+				<p:selectOneMenu id="Tsede" required="true"
+					valueChangeListener="#{descuentosMB.cargarProgramaPorSede()}"
+					requiredMessage="#{comun['global.msg.seleccionar.item']}"
+					value="#{descuentosMB.sedeSelected}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem
+						itemLabel="#{descuentosMB.selected.tblacaSede.nombre}"
+						itemValue="#{descuentosMB.selected.tblacaSede.nombre}" />
+
+					<f:selectItems value="#{descuentosMB.listaSedes}" var="var"
+						itemLabel="#{var.nombre}" />
+					<p:ajax listener="#{descuentosMB.cargarProgramaPorSede()}"
+						process="@this" update="Tprograma" />
+					<f:converter converterId="GenericConvertEntity" />
+				</p:selectOneMenu>
+				<p:message for="Tsede" id="msgSedesPro" display="text" />
+
+				<h:outputLabel for="Tprograma"
+					value="#{configurar['lbl.descuentos.programadescuentos']}" />
+
+				<p:selectOneMenu id="Tprograma" required="true" filter="true"
+					filterMatchMode="contains"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					value="#{descuentosMB.programaSelected}">
+
+					<f:selectItem
+						itemLabel="#{descuentosMB.selected.tblacaPrograma.nombre}"
+						itemValue="#{descuentosMB.selected.tblacaPrograma}" />
+
+					<f:selectItems value="#{descuentosMB.listaProgramas}" var="var"
+						itemLabel="#{var.tblacaPrograma.nombre}" />
+
+					<f:converter converterId="GenericConvertEntity" />
+				</p:selectOneMenu>
+				<p:message for="Tprograma" id="msgPro" display="text" />
+
+
+
+				<f:facet name="footer">
+					<p:commandLink id="cmlGuardarEditarD" update="gridEdit"
+						action="#{descuentosMB.update()}">
+						<p:graphicImage id="btnEDS" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlCancelarDS" immediate="true"
+						onclick="PF('dlg2').hide();" style="float:right;">
+						<p:graphicImage id="btnCDS" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

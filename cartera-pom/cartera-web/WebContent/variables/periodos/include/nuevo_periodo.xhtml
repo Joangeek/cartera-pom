@@ -1,0 +1,126 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:100% !important" id="pnlNew"
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+		<p:outputPanel>
+
+			<p:panelGrid columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto">
+
+				<h:outputLabel for="descripcionNew"
+					value="#{configurar['lbl.periodo.descripcion']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="descripcionNew" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					value="#{periodosMB.entity.descripcion}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="descripcionNew" display="icon" />
+
+				<p:outputLabel for="creacionNew"
+					value="#{configurar['lbl.periodo.fechac']} #{comun['global.asterisco']}" />
+				<p:calendar id="creacionNew"
+					requiredMessage="#{comun['global.asterisco']}"
+					value="#{periodosMB.entity.fechacreacion}"
+					style="width:100px !important;" showOn="button"
+					pattern="dd-MM-yyyy" mask="true"/>
+				<p:message for="creacionNew" id="msgNewCreacion" display="icon" />
+
+				<h:outputLabel for="codigoNew"
+					value="#{configurar['lbl.periodo.codigo']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="codigoNew" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" 
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					value="#{periodosMB.entity.oid}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="codigoNew" id="msgNewcodigo" display="icon" />
+
+				<h:outputLabel for="anioNew"
+					value="#{configurar['lbl.periodo.anio']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="anioNew" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" 
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					value="#{periodosMB.entity.anio}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="anioNew" id="msgNewanio" display="icon" />
+
+				<h:outputLabel for="semestreNew"
+					value="#{configurar['lbl.periodo.semestre']} #{comun['global.asterisco']}" />
+				<p:selectOneMenu id="semestreNew" required="true"
+					requiredMessage="#{comun['global.msg.seleccionar.item']}"
+					value="#{periodosMB.selected}" style="width:125px">
+					<f:selectItem itemLabel="#{comun['itemLabel.selecione']}"
+						itemValue="Seleccione" />
+					<f:selectItem itemValue="1"
+						itemLabel="#{configurar['lbl.periodo.1anio']}" />
+					<f:selectItem itemValue="0"
+						itemLabel="#{configurar['lbl.periodo.2anio']}" /> 
+					<p:ajax update="semestreNew" event="change" onstart="true" />
+				</p:selectOneMenu>
+				<p:message for="semestreNew" display="icon" />
+
+				<p:outputLabel for="inicioNew" value="Fecha de inicio SNIES" />
+				<p:calendar id="inicioNew" required="true"
+					requiredMessage="#{comun['global.asterisco']}"
+					value="#{periodosMB.entity.fechaInicio}"
+					style="width:100px !important;" showOn="button"
+					pattern="dd-MM-yyyy" mask="true" />
+				<p:message for="inicioNew" id="msgNewInicio" display="icon" />
+
+
+
+				<p:outputLabel for="finNew"
+					value="Fecha fin SNIES #{comun['global.asterisco']}" />
+				<p:calendar id="finNew" required="true"
+					requiredMessage="#{comun['global.asterisco']}"
+					value="#{periodosMB.entity.fechaFin}"
+					style="width:100px !important;" showOn="button"
+					pattern="dd-MM-yyyy" mask="true" />
+				<p:message for="finNew" id="msgNewFin" display="icon" />
+
+
+				<f:facet name="footer">
+					<p:commandLink id="cmlGuardarNew" process="@this"
+					update=":form :formDialogs:pnlNew"
+						actionListener="#{periodosMB.acCrear}">
+						<p:graphicImage id="btnGuardarNew" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.guardar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+					<p:commandLink immediate="true" process="@this">
+						<p:graphicImage title="#{comun['btn.limpiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/clear_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+					<p:commandLink id="cmlCancelarNew" immediate="true"
+						onclick="PF('dlg1').hide();" style="float:right;">
+						<p:graphicImage id="btnCNew" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.nuevo']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+				</f:facet>
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

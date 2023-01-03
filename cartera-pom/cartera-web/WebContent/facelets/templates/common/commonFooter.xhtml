@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	<div class="text_footer">
+		<h:outputText value="#{comun['page.footer.copy']}" />
+	</div>
+	<div class="link_footer">
+		<a href="http://www.unicomfacauca.edu.co" target="_blank"
+			style="text-decoration: none !important;"
+			onmouseout="this.style.color='color: inherit;'"
+			onmouseover="this.style.color='#EF4E36'"
+			title="#{comun['page.footer.title']}">
+			#{comun['page.footer.name']}</a>
+
+	</div>
+	<div class="text_footer">
+		<h:outputText value="#{comun['page.footer.men']}" />
+	</div>
+
+</body>
+</html>

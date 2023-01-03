@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf"
+				value="CUOTAS DEL CREDITO FINANCIERO"/>
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					
+
+					<p:commandLink id="cmlback" onclick="PF('dlg5').show();">
+						<p:graphicImage id="btnback" title="#{comun['btn.regresar']}" 
+							styleClass="imgsBA" alt="#{comun['btn.regresar']}"
+							url="${requestContexteath}/resources/images/back_f2.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlpago" onclick="PF('dlg2').show();">
+						<p:graphicImage id="btnpg" title="#{comun['btn.pagos']}"
+							styleClass="imgsBA" alt="#{comun['btn.pagos']}"
+							url="${requestContexteath}/resources/images/pago.png" /> 
+					</p:commandLink>
+
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<p:panel header="#{comun['page.header.titleMatriculas']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important">
+
+
+				<h:form>
+
+			
+					<p:dataTable var="cuotaCreditoFinanciero"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+						paginator="true" rows="10" style="margin-bottom:20px" paginatorPosition="bottom">
+
+						<p:column style="width:16px;text-align:center">
+							<p:outputLabel value="#{rowIndex+1}" styleClass="textTable" />
+						</p:column>
+						
+						
+						<p:column headerText="#{configurar['lbl.matriculas.numero']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column headerText="#{configurar['lbl.matriculas.ncuotas2']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.matriculas.limitep']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.matriculas.vpagar']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.matriculas.nrecibocaja']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.matriculas.abonos']}">
+							<h:outputText />
+						</p:column>
+
+
+
+						<p:column headerText="#{configurar['lbl.matriculas.saldo']}">
+							<h:outputText />
+						</p:column>
+
+
+						<p:column headerText="#{configurar['lbl.matriculas.pago']}">
+							<h:outputText />
+						</p:column>
+
+
+
+					</p:dataTable>
+				</h:form>
+				<!-- Confirmacion -->
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

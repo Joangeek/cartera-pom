@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="AUTORIZAR PROGRAMA" />
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlFiltrarEB" onclick="PF('dlg8').show();">
+						<p:graphicImage id="btnEB" title="#{comun['btn.filtrar']}"
+							styleClass="imgsBA" alt="#{comun['btn.filtrar']}"
+							url="${requestContexteath}/resources/images/Filter-List-icon.png" />
+					</p:commandLink>
+
+				
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<p:panel header="#{configurar['page.header.titleestudiantesbloqueados']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important">
+
+
+				<h:form>
+
+					
+					<p:dialog header="Busqueda de Estudiantes: Filtrar" modal="true"
+						widgetVar="dlg8" minHeight="40">
+						<ui:include
+							src="/bloquear_estudiantes/estudiantes_bloqueados/include/filtrar.xhtml" />
+					</p:dialog>
+
+
+					<p:dataTable var="Valores" rowIndexVar="rowIndex"
+						widgetVar="dtTable" paginatorAlwaysVisible="false"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginator="true" paginatorPosition="bottom" rows="5"
+						emptyMessage="#{comun['page.dtt.vacia']}" 
+						rowsPerPageTemplate="5,10,15,20,30,40,50,100,200">
+
+						<p:column
+							headerText="#{configurar['lbl.estudiantes_bloqueados.sede']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.estudiates_bloqueados.programa']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.estudiantes_bloqueados.identificacion']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.estudiantes_bloqueados.nombreestudiante']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.estudiantes_bloqueados.fechabloqueo']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column headerText="#{configurar['lbl.estudiantes_bloqueados.materias']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column headerText="#{configurar['lbl.estudiantes_bloqueados.periodo']}">
+							<h:outputText />
+						</p:column>
+
+					</p:dataTable>
+
+
+				</h:form>
+				<!-- Confirmacion -->
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

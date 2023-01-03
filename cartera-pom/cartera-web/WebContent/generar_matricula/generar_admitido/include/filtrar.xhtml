@@ -1,0 +1,99 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:100% !important"
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+		<p:outputPanel>
+
+			<p:panelGrid columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+
+
+				<h:outputLabel for="newsedeAd"
+					value="#{configurar['lbl.generar_admitido.sede']}" />
+				<h:selectOneMenu id="newsedeAd" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="---- Seleccione ----"
+						itemValue="---- Seleccione ----" />
+				</h:selectOneMenu>
+				<p:message for="newsedeAd" display="icon" />
+
+
+				<h:outputLabel for="newprogramaAd"
+					value="#{configurar['lbl.generar_admitido.programa']}" />
+				<h:selectOneMenu id="newprogramaAd" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="---- Seleccione ----"
+						itemValue="---- Seleccione ----" />
+				</h:selectOneMenu>
+				<p:message for="newprogramaAd" display="icon" />
+
+				<h:outputLabel for="identificacionAd"
+					value="#{configurar['lbl.generar_admitido.identificacion']}" />
+				<p:inputText id="identificacionAd"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="identificacionAd" display="icon" />
+
+				<h:outputLabel for="apellidoAd"
+					value="#{configurar['lbl.generar_admitido.apellido']}" />
+				<p:inputText id="apellidoAd"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="apellidoAd" display="icon" />
+				
+				<h:outputLabel for="matriculadoperiodoAd"
+					value="#{configurar['lbl.generar_admitido.matriculado_periodo']}" />
+				<h:selectOneMenu id="matriculadoperiodoAd" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="---- Seleccione ----"
+						itemValue="---- Seleccione ----" />
+				</h:selectOneMenu>
+				<p:message for="matriculadoperiodoAd" display="icon" />
+				
+				
+				
+				
+
+				<f:facet name="footer">
+					<p:commandLink id="adBuscar">
+						<p:graphicImage id="btnad" title="#{comun['btn.buscar']}"
+							styleClass="imgsBA" alt="#{comun['btn.buscar']}"
+							url="${requestContextPath}/resources/images/buscar.png" />
+					</p:commandLink>
+
+					<p:commandLink id="adCancelar" immediate="true"
+						onclick="PF('dlg6').hide();" style="float:right;">
+						<p:graphicImage id="btnAd" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

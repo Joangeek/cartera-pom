@@ -1,0 +1,213 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="PAGO CUOTA No 1"
+				url="${requestContexteath}/resources/images/Filter-List-icon.png" />
+		</ui:define>
+
+
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlGenerarRecibo" onclick="PF('dlg1').show();">
+						<p:graphicImage id="btnGR" title="#{comun['btn.generarrecibo']}"
+							styleClass="imgsBA" alt="#{comun['btn.generarrecibo']}"
+							url="${requestContexteath}/resources/images/generarR.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlguardar" onclick="PF('dlg3').show();">
+						<p:graphicImage id="btndr" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.guardar']}"
+							url="${requestContexteath}/resources/images/save_f2.png" />
+					</p:commandLink>
+
+
+
+					<p:commandLink id="cmlCancelar" onclick="PF('dlg2').show();">
+						<p:graphicImage id="btnC" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.cancelar']}"
+							url="${requestContexteath}/resources/images/cancelarR.png" />
+					</p:commandLink>
+
+
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+
+
+
+		<ui:define name="content">
+			<p:panel header="#{configurar['page.header.titlefinanciar']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+				footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+				<p:outputPanel>
+
+					<p:panelGrid columns="6" cellpadding="4"
+						style="width:100%; margin:0 auto;">
+						<f:facet name="header">
+							<p:outputLabel value="Datos Basicos del Estudiante" />
+						</f:facet>
+
+						<h:outputLabel
+							value="#{configurar['lbl.matriculas.nombree']}" />
+						<p:outputLabel value="NOMBRE DEL ESTUDIANTE" />
+
+
+						<h:outputLabel 
+							value="#{configurar['lbl.matriculas.identificacion']}" />
+						<p:outputLabel value="NOMBRE DEL ESTUDIANTE" />
+
+
+						<h:outputLabel
+							value="#{configurar['lbl.matriculas.programa']}" />
+						<h:outputLabel value="PROGRAMA" />
+
+					</p:panelGrid>
+
+					<br />
+
+
+					<p:panelGrid style="width:100%; margin:0 auto;">
+						<p:row>
+							<p:column style="width:50%">
+								<p:panelGrid columns="8" 
+									style="width:100%; margin:0 auto;">
+									<f:facet name="header">
+										<p:outputLabel value="Pago Credito Financiero" />
+									</f:facet>
+
+
+
+									<h:outputLabel value="#{configurar['lbl.matriculas.limitep']}" />
+									<p:outputLabel value="15/89/23" />
+								
+							
+									
+
+									<h:outputLabel value="#{configurar['lbl.matriculas.vcuota']}" />
+									<p:outputLabel value="650000" />
+								
+								
+								
+
+									<h:outputLabel value="#{configurar['lbl.matriculas.saldo']}" />
+									<p:outputLabel value="650000" />
+								
+
+									<h:outputLabel for="tipopago"
+										value="#{configurar['lbl.matriculas.tipodepago']}" />
+									
+									
+									<h:selectOneMenu id="tipopago" required="true"
+										requiredMessage="#{comun['msg.validar.obligatorio']}"
+										styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+										<f:selectItem itemLabel="---- Seleccione ---"
+											itemValue="---- Seleccione ----" />
+										<f:selectItem itemLabel="Pago Total de la Cuota"
+											itemValue="Pago Total de la Cuota" />
+										<f:selectItem itemLabel="Pago Parcial de la Cuota"
+											itemValue="Pago Parcial de la Cuota" />
+										
+								
+
+									</h:selectOneMenu>
+									<p:message for="tipopago" display="icon" />
+						
+								
+
+
+								</p:panelGrid>
+							</p:column>
+						</p:row>
+
+
+					</p:panelGrid>
+
+					<p:panelGrid style="width:100%; margin:0 auto;">
+						<p:row>
+							<p:column style="width:50%">
+								<p:panelGrid columns="8" 
+									style="width:100%; margin:0 auto;">
+									<f:facet name="header">
+										<p:outputLabel value="Pago Total de la Cuota" />
+									</f:facet>
+
+
+
+									<h:outputLabel 
+										value="#{configurar['lbl.matriculas.nreciboc']}" />
+									<p:outputLabel value="123456" />
+							
+
+
+									<p:outputLabel for="Fechasu"
+										value="Fecha de Expedición #{comun['global.asterisco']}" />
+									<p:calendar id="Fechasu" value="#{calendarView.date3}"
+										requiredMessage="#{comun['global.asterisco']}"
+										style="width:100px !important;" showOn="button"
+										pattern="dd-MM-yyyy" mask="true" />
+									<p:message for="Fechasu" id="msgEditFechasu" display="icon" />
+								
+
+
+									<p:outputLabel for="Fechanl"
+										value="Fecha de Pago #{comun['global.asterisco']}" />
+									<p:calendar id="Fechanl" value="#{calendarView.date3}"
+										requiredMessage="#{comun['global.asterisco']}"
+										style="width:100px !important;" showOn="button"
+										pattern="dd-MM-yyyy" mask="true" />
+									<p:message for="Fechanl" id="msgEditFechanl" display="icon" />
+
+									<h:outputLabel for="step" value="Hora de Pago: " />
+									<p:spinner id="step" stepFactor="12.00" />
+									<p:spinner id="stek" stepFactor="12.00" />
+									
+
+
+									<h:outputLabel 
+										value="#{configurar['lbl.matriculas.vpagar']}" />
+									<p:outputLabel value="154654" />
+								
+
+								
+
+								</p:panelGrid>
+							</p:column>
+						</p:row>
+
+
+					</p:panelGrid>
+
+
+				</p:outputPanel>
+
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+			</p:panel>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

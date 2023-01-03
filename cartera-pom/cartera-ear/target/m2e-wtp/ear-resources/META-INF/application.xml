@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" version="6">
+  <description>Proyecto para el proceso de cartera</description>
+  <display-name>cartera-ear</display-name>
+  <module>
+    <web>
+      <web-uri>cartera-web-0.0.1-SNAPSHOT.war</web-uri>
+      <context-root>/cartera</context-root>
+    </web>
+  </module>
+  <module>
+    <ejb>cartera-ejb-0.0.1-SNAPSHOT.jar</ejb>
+  </module>
+  <library-directory>lib</library-directory>
+</application>

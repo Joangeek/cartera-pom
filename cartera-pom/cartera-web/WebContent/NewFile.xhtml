@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<h:outputStylesheet name="common-style.css" library="css" />
+	<h:outputStylesheet name="bootstrap.min.css" library="css" />
+	<h:outputStylesheet name="bootstrap-theme.min.css" library="css" />
+
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{request.contextPath}/resources/images/favicon.ico" />
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+
+
+
+	<title><ui:insert name="title">
+			<ui:include src="/facelets/templates/title.xhtml" />
+		</ui:insert></title>
+</h:head>
+
+<h:body>
+
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="100" resizable="false"
+			closable="true" collapsible="false">
+			<ui:include src="/facelets/templates/common/commonHeader.xhtml" />
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="100" resizable="false"
+			closable="true" collapsible="true">
+			<ui:include src="/facelets/templates/common/commonFooter.xhtml" />
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<p:galleria value="#{imagesView.images}" var="image" panelWidth="500"
+				panelHeight="313" showCaption="true">
+				<p:graphicImage
+					value="${requestContextPath}/images/#{images}"
+					alt="Image Description for #{image}" title="#{image}" />
+			</p:galleria>
+		</p:layoutUnit>
+
+
+
+	</p:layout>
+
+</h:body>
+</html>

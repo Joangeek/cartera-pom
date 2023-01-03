@@ -1,0 +1,122 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<h:form id="formTitle">
+				<p:outputLabel id="tituloConf" value="#{estudiantesMB.titulo}" /> 
+			</h:form>
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<ui:include src="/matriculas/includes/botones.xhtml" />
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<h:form id="content">
+
+				<p:panel id="pnlP" style="width:100% !important"
+					styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+					footer="">
+
+					<!-- REDIRECCIONAMIENTO CARGA DE INTERFACES INCLUIDAS -->
+					<p:outputPanel id="pnlprogramas"
+						rendered="#{estudiantesMB.verProgramas}">
+						<ui:include src="/matriculas/programas/programas.xhtml" />
+					</p:outputPanel>
+
+					<p:outputPanel id="pnlrecibos"
+						rendered="#{estudiantesMB.verRecibos}">
+						<ui:include
+							src="/matriculas/programas/pecuniarios/pecuniarios.xhtml" />
+					</p:outputPanel>
+
+					<!-- FIN CARGA DE INTERFACES -->
+					<!-- CARGA DE DIALOGS -->
+					<!-- 	<p:dialog header="GENERACIÓN DE  RECIBO" widgetVar="dlg1"
+						minHeight="40" modal="true">
+						<ui:include src="/matriculas/programas/pecuniarios/includes/recibos.xhtml" />
+					</p:dialog>
+
+					<p:dialog header="FILTRO DE ESTUDIANTES" widgetVar="dlg2"
+						minHeight="40" modal="true">
+						<ui:include src="/matriculas/programas/pecuniarios/includes/filtro.xhtml" />
+					</p:dialog>  -->
+
+					<!-- FIN CARGA DE DIALOGS -->
+
+
+
+					<p:dataTable value="#{estudiantesMB.listarEstudiantes()}" var="est"
+						rowIndexVar="rowIndex" rowKey="#{est.oid}"
+						rendered="#{estudiantesMB.verEstudiantes}" widgetVar="dtTable"
+						paginatorAlwaysVisible="false"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginator="true" paginatorPosition="bottom" rows="10"
+						emptyMessage="#{comun['page.table.list.sin.resultados']}"
+						rowsPerPageTemplate="10,15,20,30,40,50,100,200,500"
+						selectionMode="single"
+						selection="#{estudiantesMB.selected}">
+
+						<p:column headerText="#{configurar['lbl.pecuniarios.num']}"
+							style="width:80px;text-align:left; font-weght:bold;">
+							<h:outputText value="#{rowIndex+1}" />
+						</p:column>
+						
+						 <p:ajax event="rowSelect" listener="#{estudiantesMB.onRowSelect()}" />  
+						
+						<p:column headerText="#{configurar['lbl.pecuniarios.nombre']}">
+							<h:outputText value="#{est.tblestEstudiante.nombres}" />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.pecuniarios.identificacion']}">
+							<h:outputText value="#{est.codigoUnico}" />
+						</p:column>						
+						<p:column headerText="#{configurar['lbl.pecuniarios.telefono']}">
+							<h:outputText value="#{est.tblestEstudiante.telefono}" />
+						</p:column>
+							<p:column headerText="#{configurar['lbl.pecuniarios.emailIns']}">
+							<h:outputText value="#{est.tblestEstudiante.emailInst}" />
+						</p:column>
+							<p:column headerText="#{configurar['lbl.pecuniarios.email']}"> 
+							<h:outputText value="#{est.tblestEstudiante.email}" />
+						</p:column>
+						<p:column headerText="#{configurar['lbl.pecuniarios.programa']}">
+							<h:outputText />
+						</p:column>
+					</p:dataTable>
+
+
+					<!-- Confirmacion -->
+
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+						header="#{comun['pnl.confirmacion']}">
+
+						<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+
+						<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+
+
+
+				</p:panel>
+			</h:form>
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

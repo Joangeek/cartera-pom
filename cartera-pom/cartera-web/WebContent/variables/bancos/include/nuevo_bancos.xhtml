@@ -1,0 +1,139 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:100% !important" id="pnlNew"
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+		<p:outputPanel>
+
+			<p:panelGrid columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+
+				<h:outputLabel for="nombredecuentaNew"
+					value="#{configurar['lbl.bancos.banco']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="nombredecuentaNew"
+					style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					value="#{bancosMB.entity.banco}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="nombredecuentaNew" display="icon" />
+
+				<h:outputLabel for="numerodecuentaNew"
+					value="#{configurar['lbl.bancos.numcuenta']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="numerodecuentaNew"
+					style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					value="#{bancosMB.entity.numeroCuenta}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="numerodecuentaNew" display="icon" />
+
+				<h:outputLabel for="tipodecuentaNew"
+					value="#{configurar['lbl.bancos.tcuenta']} #{comun['global.asterisco']}" />
+
+				<p:selectOneButton id="tipodecuentaNew" required="true"
+					requiredMessage="#{comun['global.msg.seleccionar.item']}"
+					value="#{bancosMB.entity.tblfinTipoCuenta}">
+					<f:selectItems value="#{bancosMB.listaTiposbancos}" var="var"
+						itemLabel="#{var.tipo}" />
+					<f:converter converterId="GenericConvertEntity" />
+					<p:ajax update="tipodecuentaNew" event="change" onstart="true" />
+				</p:selectOneButton>
+				<p:message for="tipodecuentaNew" display="icon" />
+
+				<h:outputLabel for="sedeNew"
+					value="#{configurar['lbl.bancos.sedeb']} #{comun['global.asterisco']}" />
+				<p:selectOneMenu id="sedeNew" required="true"
+					requiredMessage="#{comun['global.msg.seleccionar.item']}"
+					value="#{bancosMB.sedeSelected}">
+					<f:selectItem itemLabel="#{comun['itemLabel.selecione']}" />
+					<f:selectItems value="#{bancosMB.listaSedes}" var="var"
+						itemLabel="#{var.nombre}" />
+					<p:ajax listener="#{bancosMB.cargarProgramas()}" process="@this"
+						update="sedesp" />
+
+					<f:converter converterId="GenericConvertEntity" />
+				</p:selectOneMenu>
+				<p:message for="sedeNew" id="msgNewSedesP" display="icon" />
+
+				<h:outputLabel for="sedesp"
+					value="#{configurar['lbl.bancos.programa']} #{comun['global.asterisco']}" />
+				<p:selectOneMenu id="sedesp" required="true"
+					requiredMessage="#{comun['global.msg.seleccionar.item']}"
+					style="width:125px" filter="true" filterMatchMode="contains"
+					value="#{bancosMB.entity.tblacaSedePrograma}">
+					<f:selectItem itemLabel="#{comun['itemLabel.selecione']}" />
+
+					<f:selectItems value="#{bancosMB.listaProgramas}" var="var"
+						itemLabel="#{var.tblacaPrograma.nombre}" />
+					<f:converter converterId="GenericConvertEntity" />
+					<p:ajax update="sedesp" event="change" onstart="true" />
+				</p:selectOneMenu>
+				<p:message for="sedesp" id="msgNewSedes" display="icon" />
+
+				<h:outputLabel for="estadoNew"
+					value="#{configurar['lbl.bancos.estadob']} #{comun['global.asterisco']}" />
+
+				<p:selectOneButton id="estadoNew" value="#{bancosMB.entity.estado}"
+					required="true">
+					<f:selectItem itemValue="1"
+						itemLabel="#{comun['lbl.estado.activo']}" />
+					<f:selectItem itemValue="0"
+						itemLabel="#{comun['lbl.estado.inactivo']}" />
+					<p:ajax update="estadoNew" event="change" onstart="true" />
+				</p:selectOneButton>
+				<p:message for="estadoNew" display="icon" />
+
+
+
+				<h:selectOneMenu styleClass="textFields"
+					binding="#{bancosMB.periodEndings}">
+				</h:selectOneMenu>
+
+
+
+
+				<f:facet name="footer">
+					<p:commandLink id="cmlGuardarNew" process="@this @this,estadoNew"
+						onsuccess="PF('dlg2').hide();" update=":form :formDialogs:pnlNew"
+						actionListener="#{bancosMB.create()}">
+						<p:graphicImage id="btnGuardarNew" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.guardar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+					<p:commandLink immediate="true" process="@this"
+						oncomplete="PF('dlg2').hide();">
+						<p:graphicImage title="#{comun['btn.limpiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/clear_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+					<p:commandLink id="cmlCancelarNew" immediate="true"
+						onclick="PF('dlg2').hide();" style="float:right;">
+						<p:graphicImage id="btnCNew" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.nuevo']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

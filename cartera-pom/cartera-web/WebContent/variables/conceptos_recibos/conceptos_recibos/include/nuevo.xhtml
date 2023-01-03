@@ -1,0 +1,96 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:100% !important"
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+		<p:outputPanel>
+
+			<p:panelGrid columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+
+				<h:outputLabel for="Newconcepto"
+					value="#{configurar['lbl.conceptos.concepto']}" />
+				<p:inputText id="Newconcepto"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}"> 
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newconcepto" display="icon" />
+
+
+				<h:outputLabel for="Newestado"
+					value="#{configurar['lbl.conceptos.estado']}" />
+				<p:inputText id="Newestado"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newestado" display="icon" />
+
+
+				<h:outputLabel for="funcionario"
+					value="#{configurar['lbl.conceptos.funcionario']}" />
+				<h:selectOneMenu id="funcionario" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<f:selectItem itemLabel="---- Seleccione ----"
+						itemValue="---- Seleccione ----" />
+				</h:selectOneMenu>
+				<p:message for="funcionario" display="icon" />
+
+
+				<h:outputLabel for="Newestadocf"
+					value="#{configurar['lbl.conceptos.estadocf']}" />
+				<p:inputText id="Newestadocf"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.obligatorio1']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newestadocf" display="icon" />
+
+
+
+
+
+
+				<f:facet name="footer">
+					<p:commandLink id="cmlGuardarEditar">
+						<p:graphicImage id="btnE" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+					<p:commandLink id="cmlLimpiar" immediate="true" process="@this">
+						<p:graphicImage id="btnL" title="#{comun['btn.limpiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/clear_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+					<p:commandLink id="cmlCancelar" immediate="true"
+						onclick="PF('dlg1').hide();" style="float:right;">
+						<p:graphicImage id="btnC" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

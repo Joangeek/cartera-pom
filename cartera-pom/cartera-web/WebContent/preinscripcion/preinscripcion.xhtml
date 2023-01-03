@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+		<ui:define name="content">
+			<p:outputPanel>
+
+				<p:panel header="#{comun['page.conten.pnl.preinscripcion']}"
+					style="width:100% !important"
+					styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+					footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+					<h:form>
+						<p:growl id="growl" sticky="true" showDetail="true" />
+						<p:wizard flowListener="#{preinsMB.flowListener}" id="wiz"
+							nextLabel="#{comun['page.btn.siguiente']}"
+							backLabel="#{comun['page.btn.anterior']}">
+
+							<p:tab id="tab_programa"
+								title="#{comun['page.panel.datos.programa']}">
+
+								<ui:include src="/preinscripcion/include/dts_programa.xhtml" />
+							</p:tab>
+							<p:tab id="tab_personal"
+								title="#{comun['page.panel.datos.personales']}">
+								<ui:include src="/preinscripcion/include/dts_personales.xhtml" />
+							</p:tab>
+
+							<p:tab id="tap_address"
+								title="#{comun['page.panel.datos.ubicacion']}">
+								<ui:include src="/preinscripcion/include/dts_ubicacion.xhtml" />
+							</p:tab>
+
+							<p:tab id="tab_contact"
+								title="#{comun['page.panel.datos.contacto']}">
+								<ui:include src="/preinscripcion/include/dts_contacto.xhtml" />
+							</p:tab>
+
+							<p:tab id="tap_confirm"
+								title="#{comun['page.panel.datos.confirmacion']}">
+								<ui:include src="/preinscripcion/include/dts_confirmacion.xhtml" />
+							</p:tab>
+						</p:wizard>
+					</h:form>
+				</p:panel>
+			</p:outputPanel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

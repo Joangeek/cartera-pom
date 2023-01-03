@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+	<converter>
+		<converter-id>GenericConvertEntity</converter-id>
+		<converter-class>com.comun.controlador.util.core.GenericConvertEntity</converter-class>
+	</converter>
+	<navigation-rule>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/admin_acceso.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>estudiante</from-outcome>
+			<to-view-id>/indexe.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>egresado</from-outcome>
+			<to-view-id>/indexg.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>empleador</from-outcome>
+			<to-view-id>/empleador.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/facelets/templates/menu.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<application>
+		<locale-config>
+			<default-locale>es_CO</default-locale>
+		</locale-config>
+		<resource-bundle>
+			<base-name>idiomas/comun</base-name>
+			<var>comun</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>idiomas.preinscripcion</base-name>
+			<var>preins</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>idiomas/configurar</base-name>
+			<var>configurar</var>
+		</resource-bundle>
+	</application>
+</faces-config>

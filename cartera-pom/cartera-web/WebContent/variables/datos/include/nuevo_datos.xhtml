@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:100% !important"
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+		<p:outputPanel>
+
+			<p:panelGrid columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+
+				<h:outputLabel for="codigoiesNew"
+					value="#{configurar['lbl.datos.codigoies']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="codigoiesNew" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="codigoiesNew" display="icon" />
+
+				<h:outputLabel for="nombredNew"
+					value="#{configurar['lbl.datos.nombred']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="nombredNew" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="nombredNew" display="icon" />
+
+				<h:outputLabel for="iesprincipalNew"
+					value="#{configurar['lbl.datos.iesprincipal']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="iesprincipalNew" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="iesprincipalNew" display="icon" />
+
+				<h:outputLabel for="razonsocialNew"
+					value="#{configurar['lbl.datos.razons']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="razonsocialNew" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="razonsocialNew" display="icon" />
+
+				<h:outputLabel for="origenNew"
+					value="#{configurar['lbl.datos.origen']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="origenNew" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="origenNew" display="icon" />
+
+				
+
+				<f:facet name="footer">
+					<p:commandLink id="cmlGuardarNew">
+						<p:graphicImage id="btnGuardarNew"
+							title="#{comun['btn.guardar']}" styleClass="imgsBA"
+							alt="#{comun['btn.guardar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+					<p:commandLink immediate="true" process="@this">
+						<p:graphicImage title="#{comun['btn.limpiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.guardar']}"
+							url="${requestContextPath}/resources/images/clear_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+					<p:commandLink id="cmlCancelarNew" immediate="true"
+						onclick="PF('dlg1').hide();" style="float:right;">
+						<p:graphicImage id="btnCNew" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.nuevo']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

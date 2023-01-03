@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:100% !important"
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+		<p:outputPanel>
+
+			<p:panelGrid columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+
+
+				<h:outputLabel for="Tperiodo"
+					value="#{configurar['lbl.matriculas.periodo']}" />
+
+				<h:selectOneMenu id="Tperiodo" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+
+					<f:selectItem itemLabel="---- Seleccione ----"
+						itemValue="Seleccione" />
+
+				</h:selectOneMenu>
+
+				<p:message for="Tperiodo" display="icon" />
+
+				<h:outputLabel for="Tsede"
+					value="#{configurar['lbl.matriculas.sede']}" />
+
+				<h:selectOneMenu id="Tsede" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+
+					<f:selectItem itemLabel="---- Seleccione ----"
+						itemValue="Seleccione" />
+
+				</h:selectOneMenu>
+
+				<p:message for="Tsede" display="icon" />
+
+				<h:outputLabel for="Tprograma"
+					value="#{configurar['lbl.matriculas.programa']}" />
+
+				<h:selectOneMenu id="Tprograma" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+
+					<f:selectItem itemLabel="---- Seleccione ----"
+						itemValue="Seleccione" />
+
+				</h:selectOneMenu>
+
+				<p:message for="Tprograma" display="icon" />
+
+				<h:outputLabel for="Testadomatricula"
+					value="#{configurar['lbl.matriculas.estadomatricula']}" />
+
+				<h:selectOneMenu id="Testadomatricula" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+
+					<f:selectItem itemLabel="---- Seleccione ----"
+						itemValue="Seleccione" />
+
+				</h:selectOneMenu>
+
+				<p:message for="Testadomatricula" display="icon" />
+
+				<h:outputLabel for="Tidentificacion"
+					value="#{configurar['lbl.matriculas.identificacion']}" />
+
+				<h:selectOneMenu id="Tidentificacion" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+
+					<f:selectItem itemLabel="---- Seleccione ----"
+						itemValue="Seleccione" />
+
+				</h:selectOneMenu>
+
+				<p:message for="Tidentificacion" display="icon" />
+
+				<h:outputLabel for="Tnombre"
+					value="#{configurar['lbl.matriculas.nombree']}" />
+
+				<p:inputText id="Tnombre" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+                      <p:message for="Tnombre" display="icon" />
+
+
+                   <h:outputLabel for="Tjornada"
+					value="#{configurar['lbl.matriculas.Jornada']}" />
+
+				<h:selectOneMenu id="Tjornada" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield" style="margin-bottom:px">
+
+					<f:selectItem itemLabel="---- Seleccione ----"
+						itemValue="Seleccione" />
+
+				</h:selectOneMenu>
+
+				<p:message for="Tidentificacion" display="icon" />
+                   
+
+
+
+				<f:facet name="footer">
+					<p:commandLink id="cmlbuscar">
+						<p:graphicImage id="btnb" title="#{comun['btn.buscar']}"
+							styleClass="imgsBA" alt="#{comun['btn.buscar']}"
+							url="${requestContextPath}/resources/images/buscar.png" />
+					</p:commandLink>
+					
+					<p:commandLink id="cmlCancelar" immediate="true"
+						onclick="PF('dlg4').hide();" style="float:right;">
+						<p:graphicImage id="btnC" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

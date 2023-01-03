@@ -1,0 +1,144 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:outputPanel>
+		<p:panel style="width:100% !important" header="Busqueda de Estudiantes"
+			styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+			footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+
+			<p:panelGrid  columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;"
+				
+				>
+	
+
+
+				<h:outputLabel for="pecuniario_sede"
+					value="#{configurar['lbl.pecuniarios.sede']}" />
+
+				<h:selectOneMenu id="pecuniario_sede" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="width:125px">
+
+					<f:selectItem itemLabel="---- Seleccione -----"
+						itemValue="Seleccione" />
+					<f:selectItem itemLabel="Activo" itemValue="Activo" />
+					<f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+				</h:selectOneMenu>
+
+				
+				<p:message for="nombreASP" display="icon" />
+				
+				<h:outputLabel for="pecuniario_programa"
+					value="#{configurar['lbl.pecuniarios.programa']}" />
+
+				<h:selectOneMenu id="pecuniario_programa" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="width:125px">
+
+					<f:selectItem itemLabel="---- Seleccione -----"
+						itemValue="Seleccione" />
+					<f:selectItem itemLabel="Activo" itemValue="Activo" />
+					<f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+				</h:selectOneMenu>
+
+				
+				<p:message for="nombreASP" display="icon" />
+				
+				<h:outputLabel for="pecuniario_identificacion"
+					value="#{configurar['lbl.pecuniarios.identificacion']}" /> 
+
+				<h:selectOneMenu id="pecuniario_identificacion" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="width:125px">
+
+					<f:selectItem itemLabel="---- Seleccione -----"
+						itemValue="Seleccione" />
+					<f:selectItem itemLabel="Activo" itemValue="Activo" />
+					<f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+				</h:selectOneMenu>
+
+				
+				<p:message for="nombreASP" display="icon" />
+				
+				<h:outputLabel for="pecuniario_nombre"
+					value="#{configurar['lbl.pecuniarios.nombre']}" />
+
+				<h:selectOneMenu id="pecuniario_nombre" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="width:125px">
+
+					<f:selectItem itemLabel="---- Seleccione -----"
+						itemValue="Seleccione" />
+					<f:selectItem itemLabel="Activo" itemValue="Activo" />
+					<f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+				</h:selectOneMenu>
+
+				
+				<p:message for="nombreASP" display="icon" />
+				
+				<h:outputLabel for="pecuniario_matricula"
+					value="#{configurar['lbl.pecuniarios.matricula']}" />
+
+				<h:selectOneMenu id="pecuniario_matricula" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="width:125px">
+
+					<f:selectItem itemLabel="---- Seleccione -----"
+						itemValue="Seleccione" />
+					<f:selectItem itemLabel="Activo" itemValue="Activo" />
+					<f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+				</h:selectOneMenu>
+
+				
+				<p:message for="nombreASP" display="icon" />
+				
+			
+				
+				<f:facet name="footer">
+				
+                     <!--  codigo loboa-->
+
+
+
+					<p:commandLink id="cmlGuardarEditar02">
+						<p:graphicImage id="btnE02" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlLimpiar02" immediate="true" process="@this">
+						<p:graphicImage id="btnL02" title="#{comun['btn.limpiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/clear_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlCancelar02" immediate="true"
+						onclick="PF('dlg2').hide();" style="float:right;">
+						<p:graphicImage id="btnC02" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+				</f:facet>
+			
+			</p:panelGrid>
+
+		</p:panel>
+	
+	</p:outputPanel>
+
+
+</h:body>
+</html>

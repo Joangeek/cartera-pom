@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/facelets/templates/template_.xhtml">
+	<ui:define name="contenido">
+
+		<p:panel>
+
+			<p:panelGrid columns="1" style="width:100%;">
+				<f:facet name="header">
+					<p:graphicImage id="imgUSer" width="48"
+						style="float:left; padding:2px;"
+						title="#{comun['page.title.bienvenido.empleador']}" 
+						alt="#{comun['page.title.bienvenido.empleador']}"
+						url="${requestContexteath}/resources/images/empleador.png" />
+					<p:outputLabel value="#{comun['page.title.bienvenido.empleador']}"
+						style="font-size:140%; color:#fff; float:left; padding-top:8px; " />
+				</f:facet>
+				<p:outputPanel>
+
+					<p:commandLink id="cmlk_encuesta"
+						actionListener="#{controlAcceso.encuestaEmpleador()}"
+						title="#{encuesta['btn.realizar.encuesta']}"
+						alt="#{encuesta['btn.realizar.encuesta']}"
+						style="float:left; text-align: -webkit-center; text-decoration: blink;"
+						styleClass="imgsBA">
+						<p:graphicImage id="btnR" width="128"
+							title="#{encuesta['btn.realizar.encuesta']}"
+							alt="#{encuesta['btn.realizar.encuesta']}"
+							url="${requestContexteath}/resources/images/inicio_empleador.png" />
+						<br />
+						<p:outputLabel value="Encuestas"
+							style="font-size:110%; font-weight:bold; color:#000; vertical-align:bottom" />
+
+					</p:commandLink>
+
+				</p:outputPanel>
+		</p:panelGrid>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>

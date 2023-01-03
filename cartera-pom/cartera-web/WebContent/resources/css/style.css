@@ -1,0 +1,192 @@
+@CHARSET "ISO-8859-1";
+
+.text_footer {
+	color: #fff;
+}
+
+.footer {
+	text-align: center;
+	vertical-align: middle;
+	padding: 8px 13px;
+	background-color: #222;
+	border-top: 1px solid #080808;
+	clear: both;
+	font-size: smaller;
+	bottom: 0px;
+	z-index: 9999;
+	width: 100%;
+}
+
+.footerlogin {
+	text-align: center;
+	vertical-align: middle;
+	padding: 8px 13px;
+	background-color: #222;
+	border-top: 1px solid #080808;
+	clear: both;
+	font-size: smaller;
+	bottom: 0px;
+	z-index: 9999;
+	position: fixed !important;
+	width: 100%;
+}
+
+/*
+border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+*/
+.content {
+	vertical-align: middle;
+	padding: 1%;
+	clear: both;
+}
+
+#estatico {
+	clear: both;
+}
+
+#divLogo {
+	width: auto;
+	padding: 0.5em 1em;
+	float: left;
+}
+
+#divMenu {
+	width: auto;
+	padding: 0.5em 1em;
+	float: right;
+	vertical-align: middle;
+}
+
+#globalMsg {
+	height: 30px;
+	background-color: transparent;
+	width: 59%;
+	position: fixed;
+	margin-left: 20%;
+	margin-right: 20%;	
+	float: inherit;
+}
+
+#titlePage {
+	background-color: transparent;
+	margin-left: 15px;
+	height: 45px;
+	float: left;
+	vertical-align: middle;
+}
+
+#bAcciones {
+	background-color: transparent;
+	margin: 10px 1% 5px 1%;
+	height: 35px;
+	float: right;
+}
+
+.imgsBA {
+	margin-left: 3px;
+	border: 1px solid #dfeffc;
+	padding: 1px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.gridRepor {
+	margin-left: 10px;
+	font-size: 120%;
+	font-weight: bold;
+}
+
+#separator {
+	height: 2px;
+	margin: 0;
+	clear: both;
+	background-color: #4297D7;
+}
+
+.select_w {
+	width: 100% !important;
+	max-width: 100% !important;
+	min-width: 20% !important;
+}
+
+.calendarClass input {
+	width: 100% !important;
+	max-width: 100% !important;
+	min-width: 20% !important;
+	padding: .5rem .75rem !important;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, .15) !important;
+	border-radius: .25rem !important;
+}
+
+.dateTimeField input {
+	vertical-align: middle !important;
+	margin-right: 1px !important;
+	width: 100% !important;
+	max-width: 100% !important;
+	min-width: 20% !important;
+}
+
+.calendar .ui-datepicker-inline {
+	width: 100% !important;
+}
+
+.ui-selectonemenu .ui-selectonemenu-label {
+	color: #555 !important;
+	background-color: transparent !important;
+	padding: 0 0 0 2px !important;
+	width: 100% !important;
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger {
+	background-color: #2399E5 !important;
+	border-bottom: 0 none;
+	border-right: 0 none;
+	border-top: 0 none;
+	cursor: pointer;
+	height: 100%;
+	padding: 5px 10px 0 0; ! important;  
+	position: absolute;
+	right: 0;
+	top: 0;
+	border-color: trasnsparent !important;
+}
+
+.ui-selectonemenu {
+	cursor: pointer;
+	width: 100% !important;
+}
+
+.confirmtab {
+	font-weight: bold !important;
+	text-transform: uppercase !important;
+}
+
+.stylePerColumn {
+	background-color: #d5d5d5;
+}
+
+.calendarStyle {
+	width: 84.3% !important;
+}
+
+.ui-inputfield {
+	margin: 0;
+	outline: medium none;
+	padding: 0px;
+	font-weight: normal;
+}
+
+.ui-selectonemenu-trigger ui-state-default ui-corner-right {
+	border-right: 0;
+	border-top: 0;
+	border-bottom: 0;
+	cursor: pointer;
+	/* width: 16px; */
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 0 3px;
+}

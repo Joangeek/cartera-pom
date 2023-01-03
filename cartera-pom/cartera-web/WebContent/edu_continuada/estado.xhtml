@@ -1,0 +1,138 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="CREDITO FINANCIERO" />
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+
+
+					<p:commandLink id="cmlback" onclick="PF('dlg5').show();">
+						<p:graphicImage id="btnback" title="#{comun['btn.regresar']}"
+							styleClass="imgsBA" alt="#{comun['btn.regresar']}"
+							url="${requestContexteath}/resources/images/back_f2.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmleditar" onclick="PF('dlg3').show();">
+						<p:graphicImage id="btnedit" title="#{comun['btn.editar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContexteath}/resources/images/edit_f2.png" />
+					</p:commandLink>
+
+					<p:commandLink id="btnDell">
+						<p:graphicImage id="btnEl" title="#{comun['btn.eliminar']}"
+							styleClass="imgsBA" alt="#{comun['btn.eliminar']}"
+							url="${requestContexteath}/resources/images/trash_f2.png" />
+						<p:confirm header="Confirmation"
+							message="#{comun['global.msg.lbl.confirm']}" icon="ui-icon-alert" />
+
+						<p:commandLink id="cmletado" onclick="PF('dlg6').show();">
+							<p:graphicImage id="btnestado" title="#{comun['btn.estado']}"
+								styleClass="imgsBA" alt="#{comun['btn.estado']}"
+								url="${requestContexteath}/resources/images/estadototal.png" />
+						</p:commandLink>
+
+					</p:commandLink>
+					<p:commandLink id="cmlcuotas" onclick="PF('dlg2').show();">
+						<p:graphicImage id="btncu" title="#{comun['btn.cuota']}"
+							styleClass="imgsBA" alt="#{comun['btn.cuota']}"
+							url="${requestContexteath}/resources/images/payment-icon.png" />
+					</p:commandLink>
+
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<p:panel header="#{configurar['page.header.titleMatriculas']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important">
+
+
+				<h:form>
+				
+					<p:dialog header="Estado: Cambio de Estado"
+						modal="true" widgetVar="dlg6" minHeight="40">
+
+						<ui:include
+							src="/proceso_financiero/financiacion_contado/include/cambio_estado.xhtml" />
+					</p:dialog>
+				
+
+
+					<p:dataTable var="CreditoFinanciero"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+						paginator="true" rows="10" style="margin-bottom:20px"
+						paginatorPosition="bottom">
+
+						<p:column style="width:16px;text-align:center">
+							<p:outputLabel value="#{rowIndex+1}" styleClass="textTable" />
+						</p:column>
+
+
+						<p:column headerText="#{configurar['lbl.matriculas.numero']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.matriculas.fsolicitud']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.matriculas.entidad']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.matriculas.valormatricula']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.matriculas.cuota2']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.matriculas.valorfinan2']}">
+							<h:outputText />
+						</p:column>
+
+
+
+						<p:column headerText="#{configurar['lbl.matriculas.ncuotas2']}">
+							<h:outputText />
+						</p:column>
+
+
+						<p:column headerText="#{configurar['lbl.matriculas.estado2']}">
+							<h:outputText />
+						</p:column>
+
+
+
+					</p:dataTable>
+				</h:form>
+				<!-- Confirmacion -->
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

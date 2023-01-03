@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="CONCEPTOS DE RECIBO" />
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlFiltrar" onclick="PF('dlg6').show();">
+						<p:graphicImage id="btnF" title="#{comun['btn.filtrar']}"
+							styleClass="imgsBA" alt="#{comun['btn.filtrar']}"
+							url="${requestContexteath}/resources/images/Filter-List-icon.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlCrear" onclick="PF('dlg1').show();">
+						<p:graphicImage id="btnN" title="#{comun['btn.nuevo']}"
+							styleClass="imgsBA" alt="#{comun['btn.nuevo']}"
+							url="${requestContexteath}/resources/images/new_f2.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlEditar" onclick="PF('dlg5').show();">
+						<p:graphicImage id="btnE" title="#{comun['btn.editar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContexteath}/resources/images/edit_f2.png" />
+					</p:commandLink>
+
+					<p:commandLink id="btnDell">
+						<p:graphicImage id="btnEl" title="#{comun['btn.eliminar']}"
+							styleClass="imgsBA" alt="#{comun['btn.eliminar']}"
+							url="${requestContexteath}/resources/images/trash_f2.png" />
+						<p:confirm header="Confirmation"
+							message="#{comun['global.msg.lbl.confirm']}" icon="ui-icon-alert" />
+					</p:commandLink>
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<p:panel header="#{configurar['page.header.titleConceptos']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important">
+
+
+				<h:form>
+
+					<p:dialog header="Conceptos de Recibo: Nuevo" modal="true"
+						widgetVar="dlg1" minHeight="40">
+						<ui:include src="/variables/conceptos_recibos/include/nuevo.xhtml" />
+					</p:dialog>
+
+					<p:dialog header="Conceptos de Recibo: Eitar" modal="true"
+						widgetVar="dlg5" minHeight="40">
+						<ui:include
+							src="/variables/conceptos_recibos/include/editar_conceptos.xhtml" />
+					</p:dialog>
+
+					<p:dialog header="Conceptos de Recibo: Filtrar" modal="true"
+						widgetVar="dlg6" minHeight="40">
+						<ui:include
+							src="/variables/conceptos_recibos/include/filtrar.xhtml" />
+					</p:dialog>
+
+
+					<p:dataTable var="Valores" rowIndexVar="rowIndex"
+						widgetVar="dtTable" paginatorAlwaysVisible="false"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginator="true" paginatorPosition="bottom" rows="5"
+						emptyMessage="#{comun['page.dtt.vacia']}"
+						rowsPerPageTemplate="5,10,15,20,30,40,50,100,200">
+
+						<p:column headerText="#{configurar['lbl.conceptos.concepto']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.conceptos.estado']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.conceptos.funcionario']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.conceptos.codigounico']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.conceptos.estadocf']}">
+							<h:outputText />
+						</p:column>
+
+
+					</p:dataTable>
+
+				</h:form>
+				<!-- Confirmacion -->
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

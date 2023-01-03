@@ -1,0 +1,106 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayoutLogin.xhtml">
+
+
+		<ui:define name="content">
+
+
+			<div align="center">
+				<h:form id="loginForm">
+
+
+					<p:panelGrid id="loginPanel" style="width:30%; padding:6px;">
+						<f:facet name="header">
+							<p:row>
+								<p:column colspan="4">
+									<p:outputLabel value="#{comun['pnl.ingreso']}"
+										style="width:25%; font-weight:bold;" />
+								</p:column>
+							</p:row>
+						</f:facet>
+						<p:row>
+							<p:column rowspan="3">
+								<p:graphicImage id="btnGuardarE"
+									style="padding:25px 0px 25px 0px;"
+									title="#{comun['img.ingreso']}" alt="#{comun['img.ingreso']}"
+									url="${requestContextPath}/resources/images/security.png" />
+							</p:column>
+							<p:column>
+								<p:outputLabel for="j_username"
+									value="#{comun['page.login.lbl.usuario']}" />
+							</p:column>
+							<p:column>
+								<p:inputText id="j_username" required="true"
+									styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+									value="#{loginBean.uname}" style="width:100%"
+									requiredMessage="#{comun['page.login.lbl.campo.requerido']}">
+									<p:ajax update="msgUser" event="keyup" onstart="true" />
+								</p:inputText>
+							</p:column>
+							<p:column>
+								<p:message for="j_username" id="msgUser" display="icon"  />
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:outputLabel for="j_password"
+									value="#{comun['page.login.lbl.clave']}" />
+							</p:column>
+							<p:column>
+								<p:password id="j_password" value="#{loginBean.password}"
+									required="true" style="width:100%"
+									styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+									requiredMessage="#{comun['page.login.lbl.campo.requerido']}">
+									<p:ajax update="msgPass" event="keyup" onstart="true" />
+								</p:password>
+							</p:column>
+							<p:column>
+								<p:message for="j_password" id="msgPass" display="icon" />
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column />
+
+							<p:column>
+								<p:selectOneMenu id="console" value="#{loginBean.tipoUsuario}"
+									styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content, .ui-widget-header, .ui-selectonemenu-trigger ui-state-default ui-corner-right"
+									style="width:100%">
+									<f:selectItems value="#{loginBean.tipoAcceso()}" />
+								</p:selectOneMenu>
+							</p:column>
+							<p:column>
+								<p:spacer />
+							</p:column>
+						</p:row>
+						<f:facet name="footer">
+							<p:row>
+								<p:column colspan="4">
+									<h:panelGroup
+										style="display:block; text-align:center; margin:3px;">
+										<p:spacer />
+										<p:spacer />
+
+										<p:commandButton action="#{loginBean.loginProject()}"
+											value="Entrar" update="loginForm" ajax="true" />
+									</h:panelGroup>
+								</p:column>
+							</p:row>
+						</f:facet>
+					</p:panelGrid>
+
+				</h:form>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

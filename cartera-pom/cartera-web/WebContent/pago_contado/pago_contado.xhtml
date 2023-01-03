@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="MATRÍCULAS ESTUDIANTES REGULARES II PERIODO DE 2018 SEDE" />
+		</ui:define>
+		
+		<ui:define name="content">
+		
+			<p:panel header="#{configurar['page.header.title_valores_derechos_pecuniarios']}" 
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+				footer="">
+
+
+				<h:form>
+				
+				
+					<p:dialog header="GENERACIÓN DE  RECIBO" widgetVar="dlg1" minHeight="40" modal="true">
+					
+						<ui:include src="educacion_continuada/pago_contado/includes/recibos.xhtml" />
+						
+					</p:dialog>
+
+					<p:dialog header="FILTRO DE ESTUDIANTES" widgetVar="dlg2" minHeight="40" modal="true">
+					
+						<ui:include src="educacion_continuada/pago_contado/includes/filtro.xhtml" />
+						
+					</p:dialog>
+					
+
+						
+					
+
+					
+
+
+				
+					<p:dataTable var="tarifas" rowIndexVar="rowIndex"
+						widgetVar="dtTable" paginatorAlwaysVisible="false"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginator="true" paginatorPosition="bottom" rows="5"
+						emptyMessage="#{comun['page.table.list.sin.resultados']}"
+						rowsPerPageTemplate="5,10,15,20,30,40,50,100,200">
+						
+						<p:column headerText="#{configurar['lbl.educacion_continuada.num']}"> 
+							<h:outputText />
+						</p:column>
+								
+						<p:column headerText="#{configurar['lbl.educacion_continuada.identificacion']}">
+							<h:outputText />
+						</p:column>
+							<p:column headerText="#{configurar['lbl.educacion_continuada.nombre']}">
+							<h:outputText />
+						</p:column>
+						<p:column headerText="#{configurar['lbl.educacion_continuada.periodo']}">
+							<h:outputText />
+						</p:column>
+						<p:column headerText="#{configurar['lbl.educacion_continuada.programa']}">
+							<h:outputText />
+						</p:column>
+						<p:column headerText="#{configurar['lbl.educacion_continuada.sede']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column headerText="#{configurar['lbl.educacion_continuada.pago']}">
+							<h:outputText />
+						</p:column>
+											
+					</p:dataTable>
+				</h:form>
+				
+				<!-- Confirmacion -->
+				
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+		
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+					
+					
+					<p:commandLink id="cmlCrear" onclick="PF('dlg1').show();">
+						<p:graphicImage id="btnN" title="#{comun['btn.nuevo']}"
+							styleClass="imgsBA" alt="#{comun['btn.nuevo']}"
+							url="${requestContexteath}/resources/images/recibo.png" />
+					</p:commandLink>
+					
+					<p:commandLink id="cmlEditar" onclick="PF('dlg2').show();">
+						<p:graphicImage id="btnE" title="#{comun['btn.editar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContexteath}/resources/images/Filter-List-icon.png" />
+					</p:commandLink>
+					
+					<p:commandLink id="btnDell">
+						<p:graphicImage id="btnEl" title="#{comun['btn.eliminar']}"
+							styleClass="imgsBA" alt="#{comun['btn.eliminar']}"
+							url="${requestContexteath}/resources/images/trash_f2.png" />
+						<p:confirm header="Confirmation"
+							message="#{comun['global.msg.lbl.confirm']}" icon="ui-icon-alert" />
+					</p:commandLink>
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,228 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="DESCUENTOS" />
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlRegresar" onclick="PF('dlg4').show();">
+						<p:graphicImage id="btnCQ" title="#{comun['btn.regresar']}"
+							styleClass="imgsBA" alt="#{comun['btn.regresar']}"
+							url="${requestContexteath}/resources/images/back_f2.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlCopiar" onclick="PF('dlg3').show();">
+						<p:graphicImage id="btnCP" title="#{comun['btn.copiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.copiar']}"
+							url="${requestContexteath}/resources/images/Copy-icon.png" />
+					</p:commandLink>
+
+					<p:commandLink iid="cmlCrear" process="@this" update=":formDialogs"
+						oncomplete="PF('dlg1').show();">
+						<p:graphicImage id="btnN" title="#{comun['btn.nuevo']}"
+							styleClass="imgsBA" alt="#{comun['btn.nuevo']}"
+							url="${requestContexteath}/resources/images/new_f2.png" />
+					</p:commandLink>
+					<p:commandLink process="@this" immediate="true"
+						onclick="$('[id$=BtnEditSelecDescuentos]').click();"
+						id="cmlEditar">
+						<p:graphicImage id="btnE" title="#{comun['btn.editar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContexteath}/resources/images/edit_f2.png" />
+					</p:commandLink>
+					<p:commandLink id="btnDell"
+						onclick="$('[id$=BtnDellSelecDescuentos]').click();">
+						<p:graphicImage id="btnEl" title="#{comun['btn.eliminar']}"
+							styleClass="imgsBA" alt="#{comun['btn.eliminar']}"
+							url="${requestContexteath}/resources/images/trash_f2.png" />
+						<p:confirm header="Confirmation"
+							message="#{comun['global.msg.lbl.confirm']}" icon="ui-icon-alert" />
+					</p:commandLink>
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<p:panel header="#{comun['page.header.titleDescuentos']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+				footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+
+				<h:form id="formDialogs">
+
+					<p:dialog header="Descuentos: Nuevo" modal="true" widgetVar="dlg1"
+						minHeight="40">
+
+						<ui:include src="/variables/descuentos/include/nuevo.xhtml" />
+					</p:dialog>
+
+				</h:form>
+				<h:form id="formDialogsEdit">
+					<p:dialog header="Descuentos: Editar" modal="true" widgetVar="dlg2"
+						minHeight="40">
+
+						<ui:include src="/variables/descuentos/include/editar.xhtml" />
+					</p:dialog>
+				</h:form>
+
+				<h:form id="formDialogsCopy">
+					<p:dialog header="Descuentos: Copiar Valores  a  Nuevo Periodo"
+						modal="true" widgetVar="dlg3" minHeight="40">
+
+						<ui:include src="/variables/descuentos/include/copiarpegar.xhtml" />
+					</p:dialog>
+				</h:form>
+
+				<h:form id="form">
+					<p:dataTable id="descuentosList" var="descuentos"
+						rowIndexVar="rowIndex" value="#{descuentosMB.listaDescuentos}"
+						filteredValue="#{descuentosMB.listaDescuentosFilter}"
+						rowKey="#{descuentos.idtarifaMatricula}"
+						selection="#{descuentosMB.selected}" selectionMode="single"
+						widgetVar="dtTable" paginatorAlwaysVisible="false"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginator="true" paginatorPosition="bottom" rows="5"
+						emptyMessage="#{comun['page.table.list.sin.resultados']}"
+						rowsPerPageTemplate="5,10,15,20,30,40,50,100,200">
+
+						<p:column style="width:56px;text-align:center">
+							<f:facet name="header">
+								<h:outputText value="#{comun['lbl.estado.numero']}" />
+							</f:facet>
+							<p:outputLabel value="#{rowIndex+1}" styleClass="textTable" />
+
+						</p:column>
+
+
+						<p:column headerText="#{configurar['lbl.descuentos.tarifa']}"
+							filterBy="#{descuentos.tblfinTarifa.descripcion}"
+							filterMatchMode="contains">
+							<h:outputText value="#{descuentos.tblfinTarifa.descripcion}" />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.descuentos.tipoDescuento']}"
+							filterBy="#{descuentos.tipoDescuento}"
+							 filterMatchMode="contains">
+						
+							
+							
+							<p:outputLabel
+								rendered="#{descuentos.tipoDescuento == 1 }"
+								value="#{comun['lbl.descuentos.tipoDescuento1']}" />
+								
+								<p:outputLabel
+								rendered="#{descuentos.tipoDescuento == 2 }"
+								value="#{comun['lbl.descuentos.tipoDescuento2']}" />
+								
+								<p:outputLabel
+								rendered="#{descuentos.tipoDescuento == 3 }"
+								value="#{comun['lbl.descuentos.tipoDescuento3']}" />
+						</p:column>
+
+							
+
+						
+
+
+
+						<p:column headerText="#{configurar['lbl.descuentos.categoria']}"
+							filterBy="#{descuentos.tblmerCategoriaComfacauca.idcateComfa}"
+							filterMatchMode="contains">
+							<h:outputText
+								value="#{descuentos.tblmerCategoriaComfacauca.sigla}" />
+
+						</p:column>
+
+
+						<p:column headerText="#{configurar['lbl.descuentos.estrato']}"
+							filterBy="#{descuentos.tblEstrato.descripcion}"
+							filterMatchMode="contains">
+							<h:outputText value="#{descuentos.tblEstrato.descripcion}" />
+
+						</p:column>
+
+
+						<p:column
+							headerText="#{configurar['lbl.descuentos.descripciondescuentos']}"
+							filterBy="#{descuentos.descripcion}" filterMatchMode="contains">
+							<h:outputText value="#{descuentos.descripcion}" />
+
+						</p:column>
+
+
+						<p:column
+							headerText="#{configurar['lbl.descuentos.tipoestudiente']}"
+							filterBy="#{descuentos.tipoEstudiante}"
+							filterMatchMode="contains">
+
+
+							<p:outputLabel
+								rendered="#{descuentos.tipoEstudiante == 1 }"
+								value="#{configurar['lbl.descuentos.tipoestudiente1']}" />
+								
+								<p:outputLabel
+								rendered="#{descuentos.tipoEstudiante == 2 }"
+								value="#{configurar['lbl.descuentos.tipoestudiente2']}" />
+						</p:column>
+
+
+
+
+						<p:column
+							headerText="#{configurar['lbl.descuentos.sededescuentos']}"
+							filterBy="#{descuentos.tblacaSede.nombre}"
+							filterMatchMode="contains">
+							<h:outputText value="#{descuentos.tblacaSede.nombre}" />
+						</p:column>
+
+
+						<p:column
+							headerText="#{configurar['lbl.descuentos.programadescuentos']}"
+							filterBy="#{descuentos.tblacaPrograma.nombre}"
+							filterMatchMode="contains">
+							<h:outputText value="#{descuentos.tblacaPrograma.nombre}" />
+						</p:column>
+
+						<f:facet name="footer">
+							<p:commandButton id="BtnEditSelecDescuentos" disabled="true"
+								style="display:none;" process="descuentosList"
+								icon="ui-icon-search" value="View" update=":formDialogsEdit"
+								oncomplete="PF('dlg2').show();" />
+
+							<p:commandButton id="BtnDellSelecDescuentos" disabled="false"
+								style="display:none;" icon="ui-icon-search"
+								process="descuentosList"
+								actionListener="#{descuentosMB.delete()}" value="Dell" />
+
+						</f:facet>
+
+					</p:dataTable>
+				</h:form>
+				<!-- Confirmacion -->
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,75 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel id="pnlNew" style="width:100% !important"
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+		<p:outputPanel>
+
+			<p:panelGrid id="displayNew" columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+
+				<h:outputLabel for="Newnombre"
+					value="#{configurar['lbl.estado.nombree']} #{comun['global.asterisco']}" />
+				<p:inputText id="Newnombre" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					value="#{estadoFinanciacionMB.entity.nombre}">
+
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="Newnombre" display="text" />
+
+
+				<h:outputLabel for="TEstado"
+					value="#{configurar['lbl.estado.estado']}  #{comun['global.asterisco']}" />
+
+				<p:selectOneButton id="TEstado"
+					requiredMessage="#{comun['global.msg.seleccionar.item']}"
+					value="#{estadoFinanciacionMB.entity.estado}" required="true">
+					<f:selectItem itemValue="1"
+						itemLabel="#{comun['lbl.estado.activo']}" />
+					<f:selectItem itemValue="0"
+						itemLabel="#{comun['lbl.estado.inactivo']}" />
+					<p:ajax update="TEstado" event="change" onstart="true" />
+				</p:selectOneButton>
+				<p:message for="TEstado" display="text" />
+
+
+
+				<f:facet name="footer">
+					<p:commandLink id="cmlGuardarNew" update="displayNew"
+						action="#{estadoFinanciacionMB.create()}">
+						<p:graphicImage id="btnGuardarNew" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.guardar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+					<p:commandLink id="cmlLimpiarNew" immediate="true" process="@this"
+						action="#{estadoFinanciacionMB.reset()}" update="pnlNew">
+						<p:graphicImage id="btnL" title="#{comun['btn.limpiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/clear_f2.png" />
+						<p:resetInput target="displayNew" />
+					</p:commandLink>
+					<p:commandLink id="cmlCancelar" immediate="true"
+						onclick="PF('dlg1').hide();" style="float:right;">
+						<p:graphicImage id="btnC" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

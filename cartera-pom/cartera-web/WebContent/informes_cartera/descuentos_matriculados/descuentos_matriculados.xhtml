@@ -1,0 +1,206 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="DESCUENTOS - MATRICULADOS" />
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlSal" onclick="PF('dlg17').show();">
+						<p:graphicImage id="btnS" title="#{comun['btn.exportar.xls']}"
+							styleClass="imgsBL" alt="#{comun['btn.exportar.pdf']}"
+							url="${requestContexteath}/resources/images/excel.png" />
+					</p:commandLink>
+
+					<p:commandLink id="lmcSal" onclick="PF('dlg17').show();">
+						<p:graphicImage id="btnSal" title="#{comun['btn.imprimir']}"
+							styleClass="imgsBL" alt="#{comun['btn.imprimir']}"
+							url="${requestContexteath}/resources/images/print.png" />
+					</p:commandLink>
+
+
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<p:panel
+				header="#{configurar['page.header.titledescuentosmatriculados']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important">
+
+
+				<h:form>
+
+
+					<p:panelGrid columns="14" cellpadding="3"
+						style="width:100%; margin:0 auto;">
+
+
+						<h:outputLabel for="newsede_dm"
+							value="#{configurar['lbl.descuentos_matriculados.sede']}" />
+						<h:selectOneMenu id="newsede_dm" required="true"
+							requiredMessage="#{comun['msg.validar.obligatorio']}"
+							styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+							<f:selectItem itemLabel="---- Seleccione ----"
+								itemValue="---- Seleccione ----" />
+						</h:selectOneMenu>
+						<p:message for="newsede_dm" display="icon" />
+
+
+						<h:outputLabel for="newprograma_dm"
+							value="#{configurar['lbl.descuentos_matriculados.programa']}" />
+						<h:selectOneMenu id="newprograma_dm" required="true"
+							requiredMessage="#{comun['msg.validar.obligatorio']}"
+							styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+							<f:selectItem itemLabel="---- Seleccione ----"
+								itemValue="---- Seleccione ----" />
+						</h:selectOneMenu>
+						<p:message for="newprograma_dm" display="icon" />
+
+						<h:outputLabel for="newperiodo_dm"
+							value="#{configurar['lbl.descuentos_matriculados.periodo']}" />
+						<h:selectOneMenu id="newperiodo_dm" required="true"
+							requiredMessage="#{comun['msg.validar.obligatorio']}"
+							styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+							<f:selectItem itemLabel="---- Seleccione ----"
+								itemValue="---- Seleccione ----" />
+						</h:selectOneMenu>
+						<p:message for="newperiodo_dm" display="icon" />
+																	
+						<h:outputLabel for="newtipomatriculado_dm"
+							value="#{configurar['lbl.descuentos_matriculados.tipomatriculado']}" />
+						<h:selectOneMenu id="newtipomatriculado_dm" required="true"
+							requiredMessage="#{comun['msg.validar.obligatorio']}"
+							styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+							<f:selectItem itemLabel="---- Seleccione ----"
+								itemValue="---- Seleccione ----" />
+						</h:selectOneMenu>
+						<p:message for="newtipomatriculado_dm" display="icon" />
+					
+
+						<p:commandLink id="cmlgenerar_dm" onclick="PF('dlg17').show();">
+							<p:graphicImage id="btn_dm" title="#{comun['btn.generar']}"
+								styleClass="imgsBus" alt="#{comun['btn.generar']}"
+								url="${requestContexteath}/resources/images/aspec_f2.png" />
+						</p:commandLink>
+
+					</p:panelGrid>
+
+
+					<p:dataTable var="Valores" rowIndexVar="rowIndex" 
+						widgetVar="dtTable" paginatorAlwaysVisible="false"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginator="true" paginatorPosition="bottom" rows="5"
+						emptyMessage="#{comun['page.dtt.vacia']}"
+						rowsPerPageTemplate="5,10,15,20,30,40,50,100,200">
+
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.nombre']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.identificacion']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.programa']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.sede']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.horario']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.estrato']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.vinculacion']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.semestre']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.art']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.becado']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.porcentaje']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.valormatricula']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.descuento']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.porcentaje1']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.descadicional']}">
+							<h:outputText />
+						</p:column>
+						
+						<p:column
+							headerText="#{configurar['lbl.descuentos_matriculados.descdescuentoadicional']}">
+							<h:outputText />
+						</p:column>
+						
+						
+					
+					</p:dataTable>
+				</h:form>
+				<!-- Confirmacion -->
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

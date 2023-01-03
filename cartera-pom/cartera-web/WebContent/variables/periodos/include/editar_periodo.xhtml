@@ -1,0 +1,127 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel style="width:100% !important" 
+		styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+		footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+		<p:outputPanel>
+
+			<p:panelGrid id="display" columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+
+				<h:outputLabel for="descripcionEdit"
+					value="#{configurar['lbl.periodo.descripcion']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="descripcionEdit" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" 
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					value="#{periodosMB.selected.descripcion}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="descripcionEdit" display="icon" />
+
+				<p:outputLabel for="creacionEdit"
+					value="Fecha de creación #{comun['global.asterisco']}" />
+				<p:calendar id="creacionEdit" 
+					requiredMessage="#{comun['global.asterisco']}"
+					value="#{periodosMB.selected.fechacreacion}"
+					style="width:100px !important;" showOn="button"
+					pattern="dd-MM-yyyy" mask="true" />
+				<p:message for="creacionEdit" id="msgEditCreacion" display="icon" />
+
+				<h:outputLabel for="codigoEdit"
+					value="#{configurar['lbl.periodo.codigo']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="codigoEdit" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" 
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					value="#{periodosMB.selected.oid}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="codigoEdit" id="msgEditCodigo" display="icon" />
+
+				<h:outputLabel for="anioEdit"
+					value="#{configurar['lbl.periodo.anio']} #{comun['global.asterisco']}" />
+
+				<p:inputText id="anioEdit" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" 
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					value="#{periodosMB.selected.anio}">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+				<p:message for="anioEdit" id="msgEditanio" display="icon" />}
+				
+				<h:outputLabel for="semestreEdit"
+					value="#{configurar['lbl.periodo.semestre']} #{comun['global.asterisco']}" />
+				<p:selectOneMenu id="semestreEdit" required="true"
+					requiredMessage="#{comun['global.msg.seleccionar.item']}"
+					value="#{periodosMB.selected.semestre}" style="width:125px">
+					<f:selectItem itemLabel="#{comun['itemLabel.selecione']}"
+						itemValue="Seleccione" />
+					<f:selectItem itemValue="1"
+						itemLabel="#{configurar['lbl.periodo.1anio']}" />
+					<f:selectItem itemValue="0"
+						itemLabel="#{configurar['lbl.periodo.2anio']}" /> 
+					<p:ajax update="semestreNew" event="change" onstart="true" />
+				</p:selectOneMenu>
+				<p:message for="semestreNew" display="icon" />
+		
+
+				<p:outputLabel for="inicioEdit" value="Fecha de inicio SNIES" />
+				<p:calendar id="inicioEdit" required="true"
+					requiredMessage="#{comun['global.asterisco']}"
+					value="#{periodosMB.selected.fechaInicio}"
+					style="width:100px !important;" showOn="button"
+					pattern="dd-MM-yyyy" mask="true" />
+				<p:message for="inicioEdit" id="msgEditInicio" display="icon" />
+
+				<p:outputLabel for="finEdit"
+					value="Fecha fin SNIES #{comun['global.asterisco']}" />
+				<p:calendar id="finEdit" 
+					requiredMessage="#{comun['global.asterisco']}"
+					value="#{periodosMB.selected.fechaFin}"
+					style="width:100px !important;" showOn="button"
+					pattern="dd-MM-yyyy" mask="true" />
+				<p:message for="finEdit" id="msgEditFin" display="icon" />
+
+				<f:facet name="footer">
+					<p:commandLink id="cmlGuardarEditar">
+						<p:graphicImage id="btnGuardarEdit"
+							title="#{comun['btn.guardar']}" styleClass="imgsBA"
+							alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+					<p:commandLink immediate="true" process="@this">
+						<p:graphicImage title="#{comun['btn.limpiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/clear_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+					<p:commandLink id="cmlCancelarEdit" immediate="true"
+						onclick="PF('dlg2').hide();" style="float:right;">
+						<p:graphicImage id="btnCEdit" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>
+
+
+

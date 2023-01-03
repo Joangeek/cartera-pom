@@ -1,0 +1,153 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="FORMATOS" />
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlCrear" process="@this" update=":formDialogs"
+						oncomplete="PF('dlg4').show();">
+						<p:graphicImage id="btnN" title="#{comun['btn.nuevo']}"
+							styleClass="imgsBA" alt="#{comun['btn.nuevo']}"
+							url="${requestContexteath}/resources/images/new_f2.png" />
+					</p:commandLink>
+					<p:commandLink process="@this" immediate="true"
+						onclick="$('[id$=BtnEditSelecFormato]').click();" id="cmlEditar">
+						<p:graphicImage id="btnE" title="#{comun['btn.editar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContexteath}/resources/images/edit_f2.png" />
+					</p:commandLink>
+					<p:commandLink id="btnDell"
+						onclick="$('[id$=BtnDellSelecFormato]').click();">
+						<p:graphicImage id="btnEl" title="#{comun['btn.eliminar']}"
+							styleClass="imgsBA" alt="#{comun['btn.eliminar']}"
+							url="${requestContexteath}/resources/images/trash_f2.png" />
+						<p:confirm header="Confirmation"
+							message="#{comun['global.msg.lbl.confirm']}" icon="ui-icon-alert" />
+					</p:commandLink>
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<p:panel header="#{comun['page.header.titleFormato']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important">
+
+
+				<h:form id="formDialogs" enctype="multipart/form-data">
+
+					<p:dialog header="Formato: Nuevo" widgetVar="dlg4" modal="true"
+						minHeight="40">
+
+						<ui:include src="/variables/formato/include/nuevo_formato.xhtml" />
+					</p:dialog>
+				</h:form>
+				
+				<h:form id="formDialogsEdit" enctype="multipart/form-data">
+					<p:dialog header="Formato: Editar" widgetVar="dlg5" modal="true"
+						minHeight="40">
+
+						<ui:include src="/variables/formato/include/editar_formato.xhtml" />
+					</p:dialog>
+				</h:form>
+
+				<h:form id="form">
+
+					<p:dataTable id="formatosList" var="formato" rowIndexVar="rowIndex"
+						value="#{formatoMB.listaFormatos}"
+						filteredValue="#{formatoMB.listafoFormatosFilter}"
+						rowKey="#{formato.codigo}" selection="#{formatoMB.selected}"
+						selectionMode="single" widgetVar="dtTable"
+						paginatorAlwaysVisible="false"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginator="true" paginatorPosition="bottom" rows="5"
+						emptyMessage="#{comun['page.table.list.sin.resultados']}"
+						rowsPerPageTemplate="5,10,15,20,30,40,50,100,200">
+
+
+						<p:column style="width:26px;text-align:center">
+							<f:facet name="header">
+								<h:outputText value="#{comun['lbl.numeral']}" />
+							</f:facet>
+							<p:outputLabel value="#{rowIndex+1}" styleClass="textTable" />
+						</p:column>
+
+
+
+						<p:column headerText="#{configurar['lbl.formato.logo']}"
+							filterBy="#{formato.logo}" filterMatchMode="contains">
+							<h:outputText value="#{formato.logo}" />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.formato.nombref']}"
+							filterBy="#{formato.nombre}" filterMatchMode="contains">
+							<h:outputText value="#{formato.nombre}" />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.formato.idformato']}"
+							filterBy="#{formato.codigo}" filterMatchMode="contains">
+							<h:outputText value="#{formato.codigo}" />
+						</p:column>
+
+
+
+						<p:column headerText="#{configurar['lbl.formato.version']}"
+							filterBy="#{formato.version}" filterMatchMode="contains">
+							<h:outputText value="#{formato.version}" />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.formato.vigencia']}"
+							filterBy="#{formato.vigencia}" filterMatchMode="contains">
+							<h:outputText value="#{formato.version}" />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.formato.footer']}"
+							filterBy="#{formato.footer}" filterMatchMode="contains">
+							<h:outputText value="#{formato.footer}" />
+						</p:column>
+
+						<p:column headerText="#{configurar['lbl.empresa']}">
+							<h:outputText value="#{formato.tblEmpresa.nombre}" />
+
+						</p:column>
+
+						<f:facet name="footer">
+							<p:commandButton id="BtnEditSelecFormato" disabled="true"
+								style="display:none;" process="formatosList"
+								icon="ui-icon-search" value="View" update=":formDialogsEdit"
+								oncomplete="PF('dlg5').show();" />
+
+							<p:commandButton id="BtnDellSelecFormato"  disabled="false"
+								 style="display:none;" icon="ui-icon-search"  process="formatosList"
+								actionListener="#{formatoMB.delete()}" value="Dell"/>
+
+						</f:facet>
+
+					</p:dataTable>
+				</h:form>
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

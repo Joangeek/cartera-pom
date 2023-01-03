@@ -1,0 +1,123 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:outputPanel>
+
+		<p:dialog header="GENERACIÓN DE RECIBO" widgetVar="" minHeight="40"
+			modal="true">
+			<ui:include
+				src="/matriculas/programas/pecuniarios/includes/recibos.xhtml" />
+		</p:dialog>
+
+		<p:dialog header="FILTRO DE ESTUDIANTES" widgetVar="dlg2"
+			minHeight="40" modal="true">
+			<ui:include
+				src="/matriculas/programas/pecuniarios/includes/filtro.xhtml" />
+		</p:dialog>
+		<p:panel style="width:100% !important" header="Datos Del Estudiante"
+			styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+			footer="#{comun['page.conten.pnl.campos.asterisco']}">
+
+
+			<p:panelGrid id="display" columns="3" cellpadding="4"
+				style="width:100%; margin:0 auto;">
+
+
+
+				<h:outputLabel for="actividadd"
+					value="#{configurar['lbl.pecuniarios.concepto']}" />
+
+				<h:selectOneMenu id="actividadd" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="width:125px">
+
+					<f:selectItem itemLabel="---- Seleccione -----"
+						itemValue="Seleccione" />
+					<f:selectItem itemLabel="Activo" itemValue="Activo" />
+					<f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+				</h:selectOneMenu>
+
+
+				<p:message for="nombreASP" display="icon" />
+
+				<h:outputLabel for="nombreASP"
+					value="#{configurar['lbl.pecuniarios.descripcion_adicional']}" /> 
+
+				<p:inputText id="nombreASP" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+
+
+				<p:message for="nombreASP" display="icon" />
+
+				<h:outputLabel for="valor"
+					value="#{configurar['lbl.pecuniarios.valor']}" />
+
+				<p:inputText id="valor" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+
+				<p:message for="nombreASP" display="icon" />
+
+				<h:outputLabel for="nro_dias"
+					value="#{configurar['lbl.pecuniarios.nro_dias']}" />
+
+				<p:inputText id="nro_dias" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+
+				<p:message for="nombreASP" display="icon" />
+				<f:facet name="footer">
+
+					<!--  codigo loboa-->
+
+
+
+					<p:commandLink id="cmlGuardarEditar">
+						<p:graphicImage id="btnE" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/loading.png" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlLimpiar" immediate="true" process="@this">
+						<p:graphicImage id="btnL" title="#{comun['btn.limpiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/clear_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+
+					<p:commandLink id="cmlCancelar" immediate="true"
+						onclick="PF('dlg1').hide();" style="float:right;">
+						<p:graphicImage id="btnC" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+		</p:panel>
+
+	</p:outputPanel>
+
+
+</h:body>
+</html>

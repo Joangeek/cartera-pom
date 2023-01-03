@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel 		style="width:100% !important"
+					styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+					footer="#{comun['page.conten.pnl.campos.asterisco']}">
+	
+		<p:outputPanel>
+
+			<p:panelGrid id="display01" columns="3" cellpadding="4" 
+				style="width:100%; margin:0 auto;">
+				
+				
+				<h:outputLabel for="Tsede01"
+					value="#{configurar['lbl.calendario.sede']}" />
+
+				<h:selectOneMenu id="Tsede01" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="width:125px">
+
+					<f:selectItem itemLabel="---- Seleccione -----"
+						itemValue="Seleccione" />
+					<f:selectItem itemLabel="Activo" itemValue="Activo" />
+					<f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+				</h:selectOneMenu>
+
+				<p:message for="Tsede01" display="icon" />
+
+				<h:outputLabel for="nombreASP01" value="#{configurar['lbl.calendario.periodo']}" />
+
+				<p:inputText id="nombreASP01" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+
+
+				<p:message for="nombreASP01"  display="icon" />
+
+				
+				<h:outputLabel for="actividad01"
+					value="#{configurar['lbl.calendario.actividad']}" />
+
+				<h:selectOneMenu id="actividad01" required="true"
+					requiredMessage="#{comun['msg.validar.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield"
+					style="width:125px">
+
+					<f:selectItem itemLabel="---- Seleccione -----"
+						itemValue="Seleccione" />
+					<f:selectItem itemLabel="Activo" itemValue="Activo" />
+					<f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+				</h:selectOneMenu>
+
+				
+				<p:message for="nombreASP01" display="icon" />
+				<p:outputLabel for="inicio01" value="Inicio" />
+				<p:calendar id="inicio01" required="true"
+				requiredMessage="#{comun['msg.validar.obligatorio']}"
+			    showOn="button" pattern="dd-MM-yyyy" mask="true" />
+
+				<p:message for="nombreASP01"  display="icon" />
+
+				<p:outputLabel for="fin01" value="Fin" />
+
+				<p:calendar id="fin01" value="Fin"
+				requiredMessage="#{comun['msg.validar.obligatorio']}"
+			    showOn="button" pattern="dd-MM-yyyy" mask="true" />
+				
+
+				<p:message for="nombreASP01"  display="icon" />
+
+				<h:outputLabel for="valor01"
+					value="#{configurar['lbl.calendario.valor']}" />
+
+				<p:inputText id="valor01" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+
+
+				<p:message for="nombreASP01"  display="icon" />
+				
+				<h:outputLabel for="valor02"
+					value="#{configurar['lbl.calendario.descripciion']}" />
+					
+					<p:inputText id="valor02" style="text-transform:uppercase;"
+					onkeyup="javascript:this.value=this.value.toUpperCase();"
+					required="true" label="#{encuestas['lbl.confEncuestas.pregunta']}"
+					requiredMessage="#{comun['global.msg.campo.obligatorio']}"
+					styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+					<p:ajax event="keyup" onstart="true" />
+				</p:inputText>
+					
+				
+				
+
+				
+
+				
+				
+				<f:facet name="footer">
+					<p:commandLink id="cmlGuardarEditar01">
+						<p:graphicImage id="btnE01" title="#{comun['btn.guardar']}"
+							styleClass="imgsBA" alt="#{comun['btn.guardar']}"
+							url="${requestContextPath}/resources/images/save_f2.png" />
+					</p:commandLink>
+					<p:commandLink id="cmlLimpiar01" immediate="true" process="@this">
+						<p:graphicImage id="btnL01" title="#{comun['btn.limpiar']}"
+							styleClass="imgsBA" alt="#{comun['btn.limpiar']}"
+							url="${requestContextPath}/resources/images/clear_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+					<p:commandLink id="cmlCancelar01" immediate="true"
+						onclick="PF('dlg2').hide();" style="float:right;">
+						<p:graphicImage id="btnC01" title="#{comun['btn.cancelar']}"
+							styleClass="imgsBA" alt="#{comun['btn.cancelar']}"
+							url="${requestContextPath}/resources/images/cancel_f2.png" />
+						<p:resetInput target="display" />
+					</p:commandLink>
+				</f:facet>
+
+			</p:panelGrid>
+
+
+		</p:outputPanel>
+
+	</p:panel>
+</h:body>
+</html>

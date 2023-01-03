@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<p:panel>
+		<h:panelGrid id="confirmation" columns="3"
+			columnClasses="grid,grid,grid">
+			<h:panelGrid columns="2" columnClasses="label, value">
+				<h:outputText value="Firstname: " />
+				<h:outputText value="#{userWizard.user.firstname}"
+					styleClass="outputLabel" />
+
+				<h:outputText value="Lastname: " />
+				<h:outputText value="#{userWizard.user.lastname}"
+					styleClass="outputLabel" />
+
+				<h:outputText value="Age: " />
+				<h:outputText value="#{userWizard.user.age}"
+					styleClass="outputLabel" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="2" columnClasses="label, value">
+				<h:outputText value="Street: " />
+				<h:outputText value="#{userWizard.user.street}"
+					styleClass="outputLabel" />
+
+				<h:outputText value="Postal: " />
+				<h:outputText value="#{userWizard.user.postalCode}"
+					styleClass="outputLabel" />
+
+				<h:outputText value="City: " />
+				<h:outputText value="#{userWizard.user.city}"
+					styleClass="outputLabel" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="2" columnClasses="label, value">
+				<h:outputText value="Email: " />
+				<h:outputText value="#{userWizard.user.email}"
+					styleClass="outputLabel" />
+
+				<h:outputText value="Phone " />
+				<h:outputText value="#{userWizard.user.phone}"
+					styleClass="outputLabel" />
+
+				<h:outputText value="Info: " />
+				<h:outputText value="#{userWizard.user.info}"
+					styleClass="outputLabel" />
+
+				<h:outputText />
+				<h:outputText />
+			</h:panelGrid>
+		</h:panelGrid>
+
+		<p:commandButton value="#{comun['page.btn.finalizar']}"
+			actionListener="#{userWizard.save}" update="growl" process="@this" />
+	</p:panel>
+</h:body>
+</html>

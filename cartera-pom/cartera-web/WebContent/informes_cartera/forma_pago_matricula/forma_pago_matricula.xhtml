@@ -1,0 +1,153 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="FORMA DE PAGO DE MATRICULAS" />
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlFor" onclick="PF('dlg11').show();">
+						<p:graphicImage id="btnF" title="#{comun['btn.exportar.xls']}"
+							styleClass="imgsBL" alt="#{comun['btn.exportar.pdf']}"
+							url="${requestContexteath}/resources/images/excel.png" />
+					</p:commandLink>
+
+					<p:commandLink id="lmcFor" onclick="PF('dlg11').show();">
+						<p:graphicImage id="btnFor" title="#{comun['btn.imprimir']}"
+							styleClass="imgsBL" alt="#{comun['btn.imprimir']}"
+							url="${requestContexteath}/resources/images/print.png" />
+					</p:commandLink>
+
+
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<p:panel
+				header="#{configurar['page.header.titleformapagomatricula']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important">
+
+
+				<h:form>
+
+
+					<p:panelGrid columns="12" cellpadding="3"
+						style="width:100%; margin:0 auto;">
+
+
+						<h:outputLabel for="newsede_f"
+							value="#{configurar['lbl.forma_pago_matricula.sede']}" />
+						<h:selectOneMenu id="newsede_f" required="true"
+							requiredMessage="#{comun['msg.validar.obligatorio']}"
+							styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+							<f:selectItem itemLabel="---- Seleccione ----"
+								itemValue="---- Seleccione ----" />
+						</h:selectOneMenu>
+						<p:message for="newsede_f" display="icon" />
+
+
+						<h:outputLabel for="newprograma_f"
+							value="#{configurar['lbl.forma_pago_matricula.programas']}" />
+						<h:selectOneMenu id="newprograma_f" required="true"
+							requiredMessage="#{comun['msg.validar.obligatorio']}"
+							styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+							<f:selectItem itemLabel="---- Seleccione ----"
+								itemValue="---- Seleccione ----" />
+						</h:selectOneMenu>
+						<p:message for="newprograma_f" display="icon" />
+
+						<h:outputLabel for="newperiodo_f"
+							value="#{configurar['lbl.forma_pago_matricula.periodo']}" />
+						<h:selectOneMenu id="newperiodo_f" required="true"
+							requiredMessage="#{comun['msg.validar.obligatorio']}"
+							styleClass="form-control .input-lg .select_w .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield">
+							<f:selectItem itemLabel="---- Seleccione ----"
+								itemValue="---- Seleccione ----" />
+						</h:selectOneMenu>
+						<p:message for="newperiodo_f" display="icon" />
+
+
+
+						<p:commandLink id="cmlgenerar_e" onclick="PF('dlg11').show();">
+							<p:graphicImage id="btn_e" title="#{comun['btn.generar']}"
+								styleClass="imgsBus" alt="#{comun['btn.generar']}"
+								url="${requestContexteath}/resources/images/aspec_f2.png" />
+						</p:commandLink>
+
+					</p:panelGrid>
+
+
+					<p:dataTable var="Valores" rowIndexVar="rowIndex"
+						widgetVar="dtTable" paginatorAlwaysVisible="false"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginator="true" paginatorPosition="bottom" rows="5"
+						emptyMessage="#{comun['page.dtt.vacia']}"
+						rowsPerPageTemplate="5,10,15,20,30,40,50,100,200">
+
+						<p:column
+							headerText="#{configurar['lbl.forma_pago_matricula.programas']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column
+							headerText="#{configurar['lbl.forma_pago_matricula.entidaduno']}">
+							<h:outputText />
+						</p:column>
+						
+							<p:column
+							headerText="#{configurar['lbl.forma_pago_matricula.entidaddos']}">
+							<h:outputText />
+						</p:column>
+						
+							<p:column
+							headerText="#{configurar['lbl.forma_pago_matricula.entidadtres']}">
+							<h:outputText />
+						</p:column>
+						
+							<p:column
+							headerText="#{configurar['lbl.forma_pago_matricula.tremitecredito']}">
+							<h:outputText />
+						</p:column>
+						
+							<p:column
+							headerText="#{configurar['lbl.forma_pago_matricula.contado']}">
+							<h:outputText />
+						</p:column>
+						
+							<p:column
+							headerText="#{configurar['lbl.forma_pago_matricula.totalmatriculados']}">
+							<h:outputText />
+						</p:column>
+
+
+
+
+					</p:dataTable>
+				</h:form>
+				<!-- Confirmacion -->
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

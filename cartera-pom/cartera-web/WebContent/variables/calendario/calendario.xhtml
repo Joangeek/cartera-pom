@@ -1,0 +1,131 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>
+	<ui:composition
+		template="/facelets/templates/common/commonLayout.xhtml">
+
+		<ui:define name="titleMenu">
+			<p:outputLabel id="tituloConf" value="CALENDARIO ACADÉMICO" />
+		</ui:define>
+		<ui:define name="barraAcciones">
+			<h:form id="formteba">
+				<p:outputPanel id="outenl" style="floal:right;">
+					<!--  -->
+
+					<p:commandLink id="cmlCrear" onclick="PF('dlg1').show();">
+						<p:graphicImage id="btnN" title="#{comun['btn.nuevo']}"
+							styleClass="imgsBA" alt="#{comun['btn.nuevo']}"
+							url="${requestContexteath}/resources/images/new_f2.png" />
+					</p:commandLink>
+					<p:commandLink id="cmlEditar" onclick="PF('dlg2').show();">
+						<p:graphicImage id="btnE" title="#{comun['btn.editar']}"
+							styleClass="imgsBA" alt="#{comun['btn.editar']}"
+							url="${requestContexteath}/resources/images/edit_f2.png" />
+					</p:commandLink>
+
+					<p:commandLink id="btnDell">
+						<p:graphicImage id="btnEl" title="#{comun['btn.eliminar']}"
+							styleClass="imgsBA" alt="#{comun['btn.eliminar']}"
+							url="${requestContexteath}/resources/images/trash_f2.png" />
+						<p:confirm header="Confirmation"
+							message="#{comun['global.msg.lbl.confirm']}" icon="ui-icon-alert" />
+					</p:commandLink>
+				</p:outputPanel>
+			</h:form>
+		</ui:define>
+		<ui:define name="content">
+			<p:panel header="#{configurar['page.header.titleCalendario']}"
+				style="width:100% !important"
+				styleClass="ui-wizard-step-title ui-state-default ui-state-highlight ui-corner-all !important"
+				footer="">
+
+
+				<h:form id="formDialogs">
+  
+					<p:dialog header="Calendario Académico: Nuevo" widgetVar="dlg1"
+						minHeight="40" modal="true">
+
+						<ui:include src="/variables/calendario/includes/nuevo.xhtml" />
+					</p:dialog>
+<!--
+					<p:dialog header="Calendario Académico: Editar" widgetVar="dlg2"
+						minHeight="40" modal="true">
+
+						<ui:include src="/variables/calendario/includes/editar.xhtml" />
+					</p:dialog>
+-->
+				</h:form>
+				<h:form id="form">
+					<p:dataTable id="alendarioList" var="calendario"
+						rowIndexVar="rowIndex"
+						value="#{calendarioMB.listaCalendarioAcademico}"
+						filteredValue="#{calendarioMB.listaCalendarioFilter}"
+						rowKey="#{calendario.idcalendario}"
+						selection="#{calendarioMB.selected}" selectionMode="single"
+						widgetVar="dtTable" 
+						paginatorAlwaysVisible="false"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginator="true" paginatorPosition="bottom" rows="5"
+						emptyMessage="#{comun['page.table.list.sin.resultados']}"
+						rowsPerPageTemplate="5,10,15,20,30,40,50,100,200">
+
+						<p:column headerText="#{comun['lbl.numeral']}">
+							<f:facet name="header">
+								<h:outputText value="#{comun['lbl.numeral']}" />
+							</f:facet>
+							<p:outputLabel value="#{rowIndex+1}" styleClass="textTable" />
+						</p:column>
+						
+						<p:column headerText="#{comun['lbl.sede']}"
+						  filterBy="#{calendario.todasSedes}">
+							<h:outputText  />
+						</p:column>
+						
+						<p:column headerText="#{comun['lbl.periodo']}"
+						filterBy="#{calendario.tblacaPeriodo.anio}">
+						
+							<h:outputText />
+						</p:column>
+						<p:column headerText="#{comun['lbl.Actividad']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{comun['lbl.inicio']}"
+						>
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{comun['lbl.valor']}">
+							<h:outputText />
+						</p:column>
+
+						<p:column headerText="#{comun['lbl.descripcion']}">
+							<h:outputText />
+						</p:column>
+
+
+
+
+					</p:dataTable>
+				</h:form>
+
+				<!-- Confirmacion -->
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+					header="#{comun['pnl.confirmacion']}">
+					<p:commandButton value="#{comun['btn.confirm.yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{comun['btn.confirm.not']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

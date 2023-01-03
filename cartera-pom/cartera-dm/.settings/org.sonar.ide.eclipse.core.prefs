@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+extraProperties=sonar.jdbc.password\=ranos\r\nsonar.jdbc.username\=sonar\r\nsonar.jdbc.url\=jdbc\:oracle\:thin\:@192.168.0.7\:1521\:xe\r\nsonar.jdbc.driverClassName\=oracle.jdbc.OracleDriver\r\nsonar.hibernate.default_schema\=sonar\r\nsonar.host.url\=http\://192.168.0.4\:9000/
+projectKey=com.cartera\:cartera-dm
+serverUrl=http\://localhost\:9000
+version=2
